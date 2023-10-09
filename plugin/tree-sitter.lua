@@ -6,7 +6,7 @@ if not status then return end
 
 treesitter.setup {
     -- files to check
-    ensure_installed = {'lua', 'tsx', 'typescript', 'vim'},
+    ensure_installed = {'lua', 'vue', 'tsx', 'typescript', 'vim'},
 
     highlight = {enable = true},
     indent = {enable = true},
