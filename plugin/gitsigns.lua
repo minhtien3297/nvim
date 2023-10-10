@@ -1,6 +1,5 @@
 local status, git = pcall(require, 'gitsigns')
 
--- if status return false then stop
 if not status then return end
 
 git.setup {

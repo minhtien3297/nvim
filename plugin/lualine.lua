@@ -1,6 +1,5 @@
 local status, lualine = pcall(require, 'lualine')
 
--- if status return false then stop
 if not status then return end
 
 lualine.setup {
@@ -25,7 +24,7 @@ lualine.setup {
                     color_info = { fg = '#008080' },
                 },
                 colored = true,
-                update_in_insert = true,  
+                update_in_insert = true,
                 always_visible = true,
             },
         },
