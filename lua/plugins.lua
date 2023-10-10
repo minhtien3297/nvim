@@ -85,6 +85,11 @@ require("lazy").setup({
         lazy = true,
     },
 
+    -- tmux navigator
+    {
+        'christoomey/vim-tmux-navigator'
+    },
+
     -- lsp
     {
         --- Uncomment these if you want to manage LSP servers from neovim
