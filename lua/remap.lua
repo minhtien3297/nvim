@@ -27,12 +27,12 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- format file and save
 vim.keymap.set("n", "<C-f>" , "ggVG=:w<CR>", { noremap = true, silent = true })
 
--- This is going to get me cancelled
+-- go back to normal mode
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 -- vim.keymap.set("n", "", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
-vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
-end)
+-- source file
+vim.keymap.set("n", "<leader><leader>", ":so<CR>", { noremap = true, silent = true })
+

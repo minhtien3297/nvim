@@ -27,47 +27,62 @@ require("lazy").setup({
     -- tag highlight
     {
         'nvim-treesitter/nvim-treesitter',
+        lazy = true,
         build = ':TSUpdate'
     },
 
     -- status bar
     {
         'nvim-lualine/lualine.nvim',
-        opts = {
-            options = {
-                icons_enabled = true,
-                theme = 'tokyonight',
-                component_separators = '|',
-                section_separators = '',
-            }
-        }
     },
 
     -- find files
     {
         'nvim-telescope/telescope.nvim', tag = '0.1.3',
         -- or                              , branch = '0.1.x',
-        dependencies = { 'nvim-lua/plenary.nvim' }
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        lazy = true,
     },
 
     -- file navigation
     {
-        'ThePrimeagen/harpoon'
+        'ThePrimeagen/harpoon',
+        lazy = true,
     },
 
     -- file icons
     {
-        'nvim-tree/nvim-web-devicons'
+        'nvim-tree/nvim-web-devicons',
+        lazy = true,
     },
 
     -- highlight color
     {
-        'norcalli/nvim-colorizer.lua'
+        'norcalli/nvim-colorizer.lua',
+        lazy = true,
+        opts = {} 
+    },
+
+    -- highlight indent
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        lazy = true,
+        opts = {} 
+    },
+
+    -- auto pairs
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        lazy = true,
+        opts = {} 
     },
 
     -- git
     {
-        'tpope/vim-fugitive'
+        'lewis6991/gitsigns.nvim',
+        lazy = true,
     },
 
     -- lsp
@@ -81,5 +96,17 @@ require("lazy").setup({
         {'hrsh7th/cmp-nvim-lsp'},
         {'hrsh7th/nvim-cmp'},
         {'L3MON4D3/LuaSnip'},
+        lazy = true,
+    },
+
+    -- which key
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end,
+        lazy = true,
     },
 })
