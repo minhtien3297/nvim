@@ -17,14 +17,16 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 
 -- Auto wrap line when it's too long
-vim.opt.wrap = false
+vim.opt.wrap = true
 
 -- Search include all uppercase and lowercase
 vim.o.ignorecase = true
 vim.o.smartcase= true
 
 -- Add color to line cursor is in
-vim.opt.cursorline = true
+vim.opt.cursorline = false
+
+-- Display theme color
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
@@ -36,4 +38,5 @@ vim.opt.timeoutlen = 250
 vim.opt.timeout = true
 vim.opt.updatetime = 250
 
-vim.opt.colorcolumn = "80"
+-- show collumn right hand
+vim.opt.colorcolumn = "0"
