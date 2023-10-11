@@ -7,6 +7,16 @@ wk.register({
     ["<C-f>"] = "Format and Save file",
 })
 
+-- Trouble
+wk.register({
+    ["<leader>xx"] = {
+        function()
+            require("trouble").toggle()
+        end,
+        "Toggle Error List"
+    }
+})
+
 -- gitsigns
 wk.register({
     ["<leader>"] = {

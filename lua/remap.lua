@@ -21,7 +21,7 @@ vim.keymap.set("n", "J", "mzJ`z")
 -- vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
 -- format file and save
-vim.keymap.set("n", "<C-f>" , "ggVG=:w<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-f>", "ggVG=:w<CR>", { noremap = true, silent = true })
 
 -- go back to normal mode
 vim.keymap.set("i", "<C-c>", "<Esc>")
@@ -32,3 +32,5 @@ vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 -- source file
 vim.keymap.set("n", "<leader><leader>", ":so<CR>", { noremap = true, silent = true })
 
+-- open folder tree
+vim.keymap.set("n", "<leader>b", "<cmd>NvimTreeToggle<CR>", { noremap = true, silent = true })

@@ -5,7 +5,7 @@ if not status then return end
 lualine.setup {
     options = {
         icons_enabled = true,
-        theme = 'tokyonight',
+        theme = 'catppuccin',
         component_separators = ' ',
         section_separators = '',
     },
@@ -16,10 +16,10 @@ lualine.setup {
 
             {
                 'diagnostics',
-                sources = { 'nvim_lsp', 'nvim_diagnostic', 'nvim_workspace_diagnostic', 'coc', 'ale', 'vim_lsp'},
+                sources = { 'nvim_lsp', 'nvim_diagnostic', 'nvim_workspace_diagnostic', 'coc', 'ale', 'vim_lsp' },
                 symbols = { error = ' ', warn = ' ', info = ' ' },
                 diagnostics_color = {
-                    color_error = { fg = '#ec5f67'},
+                    color_error = { fg = '#ec5f67' },
                     color_warn = { fg = '#ECBE7B' },
                     color_info = { fg = '#008080' },
                 },

@@ -11,17 +11,19 @@ if not vim.loop.fs_stat(lazypath) then
     })
 end
 
+-- stanx
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup(
     {
         -- theme
         {
-            "folke/tokyonight.nvim",
+            "catppuccin/nvim",
+            name = "catppuccin",
             priority = 1000,
             lazy = false,
             config = function()
-                vim.cmd([[colorscheme tokyonight]])
+                vim.cmd([[colorscheme catppuccin-mocha]])
             end,
         },
 
@@ -101,11 +103,19 @@ require("lazy").setup(
             lazy = false,
         },
 
+        -- markdown preview
+        { 'iamcco/markdown-preview.nvim' },
+
         -- highlight todo
         {
             "folke/todo-comments.nvim",
             dependencies = { "nvim-lua/plenary.nvim" },
             opts = {}
+        },
+
+        -- git conflict
+        {
+            "sindrets/diffview.nvim"
         },
 
         -- git
@@ -128,6 +138,36 @@ require("lazy").setup(
             'gelguy/wilder.nvim',
         },
 
+        -- folder tree
+        {
+            "nvim-tree/nvim-tree.lua",
+            version = "*",
+            lazy = false,
+            dependencies = {
+                "nvim-tree/nvim-web-devicons",
+            },
+            config = function()
+                require("nvim-tree").setup {}
+            end,
+        },
+
+        -- error list
+        {
+            "folke/trouble.nvim",
+            dependencies = { "nvim-tree/nvim-web-devicons" },
+            opts = {},
+        },
+
+        -- vim surround
+        {
+            "kylechui/nvim-surround",
+            version = "*", -- Use for stability; omit to use `main` branch for the latest features
+            event = "VeryLazy",
+            config = function()
+                require("nvim-surround").setup({})
+            end
+        },
+
         -- lsp
         {
             { 'williamboman/mason.nvim' },
@@ -138,6 +178,7 @@ require("lazy").setup(
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'hrsh7th/nvim-cmp' },
             { 'L3MON4D3/LuaSnip' },
+            { 'onsails/lspkind.nvim' },
         },
 
         -- which key
