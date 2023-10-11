@@ -10,7 +10,7 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = { 'tailwindcss', 'marksman', 'volar', 'grammarly', 'stylelint_lsp', 'lua_ls', 'cssls', 'eslint',
+    ensure_installed = { 'tailwindcss', 'volar', 'grammarly', 'stylelint_lsp', 'lua_ls', 'cssls', 'eslint',
         'html', 'jsonls', 'biome' },
 
     automatic_installation = true,

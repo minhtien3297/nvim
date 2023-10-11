@@ -21,7 +21,6 @@ require("lazy").setup(
             "catppuccin/nvim",
             name = "catppuccin",
             priority = 1000,
-            lazy = false,
             config = function()
                 vim.cmd([[colorscheme catppuccin-mocha]])
             end,
@@ -30,7 +29,7 @@ require("lazy").setup(
         -- tag highlight
         {
             'nvim-treesitter/nvim-treesitter',
-            build = ':TSUpdate'
+            build = ':TSUpdate',
         },
 
         -- status bar
@@ -59,7 +58,7 @@ require("lazy").setup(
             'rcarriga/nvim-notify',
             config = function()
                 vim.notify = require('notify')
-            end
+            end,
         },
 
         -- file navigation
@@ -93,26 +92,25 @@ require("lazy").setup(
 
         -- smooth scroll
         {
-            'karb94/neoscroll.nvim'
+            'karb94/neoscroll.nvim',
         },
 
         -- Comment
         {
             'numToStr/Comment.nvim',
             opts = {},
-            lazy = false,
         },
 
         -- markdown preview
         {
-            'iamcco/markdown-preview.nvim'
+            'iamcco/markdown-preview.nvim',
         },
 
         -- highlight todo
         {
             "folke/todo-comments.nvim",
             dependencies = { "nvim-lua/plenary.nvim" },
-            opts = {}
+            opts = {},
         },
 
         -- git fugitive
@@ -122,7 +120,7 @@ require("lazy").setup(
 
         -- git conflict
         {
-            "sindrets/diffview.nvim"
+            "sindrets/diffview.nvim",
         },
 
         -- git
@@ -149,12 +147,17 @@ require("lazy").setup(
         {
             "nvim-tree/nvim-tree.lua",
             version = "*",
-            lazy = false,
             dependencies = {
                 "nvim-tree/nvim-web-devicons",
             },
             config = function()
-                require("nvim-tree").setup {}
+                require("nvim-tree").setup({
+                    filters = {
+                        dotfiles = false, -- show dot files
+                        custom = { "^.git$" }, -- hide git folder
+                        git_ignored = false, -- show git ignore files
+                    },
+                })
             end,
         },
 
@@ -172,7 +175,7 @@ require("lazy").setup(
             event = "VeryLazy",
             config = function()
                 require("nvim-surround").setup({})
-            end
+            end,
         },
 
         -- lsp

@@ -5,18 +5,31 @@ if not status then return end
 lualine.setup {
     options = {
         icons_enabled = true,
-        theme = 'catppuccin',
+        theme = 'palenight',
         component_separators = ' ',
         section_separators = '',
     },
 
     sections = {
+        lualine_b = {
+            'branch',
+            'diff',
+        },
+
         lualine_c = {
-            'filename',
+            {
+                'filename',
+                file_status = true,
+                symbols = {
+                    modified = 'modified',      -- Text to show when the file is modified.
+                    readonly = 'readonly',      -- Text to show when the file is non-modifiable or readonly.
+                    unnamed = 'unnamed buffers',        -- Text to show for unnamed buffers.
+                    newfile = 'newfile',        -- Text to show for newly created file before first write
+                }
+            },
 
             {
                 'diagnostics',
-                sources = { 'nvim_lsp', 'nvim_diagnostic', 'nvim_workspace_diagnostic', 'coc', 'ale', 'vim_lsp' },
                 symbols = { error = ' ', warn = ' ', info = ' ' },
                 diagnostics_color = {
                     color_error = { fg = '#ec5f67' },
@@ -25,7 +38,7 @@ lualine.setup {
                 },
                 colored = true,
                 update_in_insert = true,
-                always_visible = true,
+                always_visible = false,
             },
         },
 
@@ -51,8 +64,11 @@ lualine.setup {
             },
 
             'encoding',
-            'fileformat',
-            'filetype'
+
+            {
+                'filetype',
+                colored = true,
+            }
         }
     }
 }
