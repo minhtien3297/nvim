@@ -104,13 +104,20 @@ require("lazy").setup(
         },
 
         -- markdown preview
-        { 'iamcco/markdown-preview.nvim' },
+        {
+            'iamcco/markdown-preview.nvim' 
+        },
 
         -- highlight todo
         {
             "folke/todo-comments.nvim",
             dependencies = { "nvim-lua/plenary.nvim" },
             opts = {}
+        },
+
+        -- git fugitive
+        {
+            'tpope/vim-fugitive',
         },
 
         -- git conflict
