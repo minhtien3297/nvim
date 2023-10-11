@@ -34,3 +34,6 @@ vim.keymap.set("n", "<leader><leader>", ":so<CR>", { noremap = true, silent = tr
 
 -- open folder tree
 vim.keymap.set("n", "<leader>b", "<cmd>NvimTreeToggle<CR>", { noremap = true, silent = true })
+
+-- quit
+vim.keymap.set("n", "<C-q>", "<cmd>:q<CR>", { noremap = true, silent = true })
