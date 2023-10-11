@@ -7,6 +7,16 @@ wk.register({
     ["<C-f>"] = "Format and Save file",
 })
 
+-- remap
+wk.register({
+    ["<leader>gs"] = {
+        function()
+            vim.cmd.Git()
+        end,
+        'Git'
+    }
+})
+
 -- Trouble
 wk.register({
     ["<leader>xx"] = {
