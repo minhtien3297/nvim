@@ -105,7 +105,7 @@ require("lazy").setup(
 
         -- markdown preview
         {
-            'iamcco/markdown-preview.nvim' 
+            'iamcco/markdown-preview.nvim'
         },
 
         -- highlight todo
