@@ -49,7 +49,7 @@ require("lazy").setup(
         {
             "okuuva/auto-save.nvim",
             cmd = "ASToggle",
-            event = { "InsertLeave", "TextChanged" },
+            event = { "InsertLeave", "TextChanged", "BufLeave", "FocusLost" },
             opts = {},
         },
 
@@ -143,6 +143,11 @@ require("lazy").setup(
             'gelguy/wilder.nvim',
         },
 
+        -- popup menu
+        {
+            'anuvyklack/hydra.nvim',
+        },
+
         -- folder tree
         {
             "nvim-tree/nvim-tree.lua",
@@ -151,13 +156,7 @@ require("lazy").setup(
                 "nvim-tree/nvim-web-devicons",
             },
             config = function()
-                require("nvim-tree").setup({
-                    filters = {
-                        dotfiles = false, -- show dot files
-                        custom = { "^.git$" }, -- hide git folder
-                        git_ignored = false, -- show git ignore files
-                    },
-                })
+                require("nvim-tree").setup({})
             end,
         },
 

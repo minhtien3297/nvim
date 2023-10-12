@@ -20,11 +20,12 @@ lualine.setup {
             {
                 'filename',
                 file_status = true,
+                path = 1,
                 symbols = {
-                    modified = 'modified',      -- Text to show when the file is modified.
-                    readonly = 'readonly',      -- Text to show when the file is non-modifiable or readonly.
-                    unnamed = 'unnamed buffers',        -- Text to show for unnamed buffers.
-                    newfile = 'newfile',        -- Text to show for newly created file before first write
+                    modified = 'modified',       -- Text to show when the file is modified.
+                    readonly = 'readonly',       -- Text to show when the file is non-modifiable or readonly.
+                    unnamed = 'unnamed buffers', -- Text to show for unnamed buffers.
+                    newfile = 'newfile',         -- Text to show for newly created file before first write
                 }
             },
 

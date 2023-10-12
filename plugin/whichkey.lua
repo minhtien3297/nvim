@@ -4,7 +4,6 @@ local wk = require("which-key")
 wk.register({
     ["<leader><space>"] = "source file",
     ["<leader>q"] = "Exit file",
-    ["<C-f>"] = "Format and Save file",
 })
 
 -- remap
@@ -19,7 +18,7 @@ wk.register({
 
 -- Trouble
 wk.register({
-    ["<leader>xx"] = {
+    ["<leader>x"] = {
         function()
             require("trouble").toggle()
         end,

@@ -13,15 +13,13 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "J", "mzJ`z")
 
 -- copy to clipboard
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
-
--- format file and save
-vim.keymap.set("n", "<C-f>", "ggVG=:w<CR>", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 
 -- go back to normal mode
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+-- format file and save
+vim.keymap.set("n", "<C-f>", vim.lsp.buf.format)
 
 -- source file
 vim.keymap.set("n", "<leader><leader>", ":so<CR>", { noremap = true, silent = true })
