@@ -143,11 +143,6 @@ require("lazy").setup(
             'gelguy/wilder.nvim',
         },
 
-        -- popup menu
-        {
-            'anuvyklack/hydra.nvim',
-        },
-
         -- folder tree
         {
             "nvim-tree/nvim-tree.lua",
