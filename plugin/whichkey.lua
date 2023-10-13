@@ -1,124 +1,170 @@
 local wk = require("which-key")
 
--- remap
-wk.register({
-    ["<leader><space>"] = "source file",
-    ["<leader>q"] = "Exit file",
+local builtin = require('telescope.builtin')
+
+wk.setup({
+    ignore_missing = true,
 })
 
--- remap
 wk.register({
-    ["<leader>gs"] = {
-        function()
-            vim.cmd.Git()
-        end,
-        'Git'
-    }
-})
-
--- Trouble
-wk.register({
-    ["<leader>x"] = {
-        function()
-            require("trouble").toggle()
-        end,
-        "Toggle Error List"
-    }
-})
-
--- gitsigns
-wk.register({
-    ["<leader>"] = {
-        hs = "Stage Hunk",
-        hr = "Reset Hunk",
-        hS = "Stage Buffer",
-        hu = "Undo Stage Hunk",
-        hR = "Reset Buffer",
-        hp = "Preview Hunk",
-        hb = "Blame Line Full",
-        tb = "Toggle Current Line Blame",
-        hd = "Diff This",
-        hD = "Diff This ~",
-        td = "Toggle Deleted",
-    }
-})
-
--- harpoon
-wk.register({
-    ["<C-a>"] = "Add File To Harpoon",
-    ["<C-e>"] = "Toggle Harpoon Menu",
-})
-
--- lsp
-wk.register({
-    ["gd"] = {
-        function()
-            vim.lsp.buf.declaration()
-        end,
-        "LSP definition",
-    },
-
-    ["<leader>f"] = {
+    -- remap
+    ["<leader><space>"] = { ":so<CR>", "Source file" },
+    ["<C-q>"] = { "<cmd>q<CR>", "Exit file" },
+    ["<C-f>"] = {
         function()
             vim.lsp.buf.format()
         end,
-        "LSP format",
+        'Format file'
     },
+    ["<C-c>"] = { "<Esc>", "Normal Mode", mode = "i" },
+    ["<leader>y"] = { [["+y]], "Copy to clipboard", mode = { "n", "v" } },
+    J = {
+        { "mzJ`z",            "Cut line eazier",     mode = "n" },
+        { ":m '>+1<CR>gv=gv", "Highlight rows down", mode = "v" },
+    },
+    K = { ":m '<-2<CR>gv=gv", "Highlight rows up", mode = "v" },
 
-    ["<leader>vws"] = {
+    -- nvim tree
+    ["<leader>b"] = { "<cmd>NvimTreeToggle<CR>", "Toggle Sidebar" },
+
+    -- git fugitive
+    ["<leader>f"] = {
+        name = "fugitive",
+
         function()
-            vim.lsp.buf.workspace_symbol()
+            vim.cmd.Git()
         end,
-        "LSP workspace symbol",
+        'Fugitive'
     },
 
-    ["<leader>vof"] = {
-        function()
-            vim.diagnostic.open_float()
-        end,
-        "LSP show diagnostics",
+    -- gitsigns
+    ["<leader>h"] = {
+        name = "gitsigns",
+
+        s = "Stage Hunk",
+        r = "Reset Hunk",
+        S = "Stage Buffer",
+        u = "Undo Stage Hunk",
+        R = "Reset Buffer",
+        p = "Preview Hunk",
+        b = "Blame Line Full",
+        d = "Diff This",
+        D = "Diff This ~",
     },
 
-    ["[d"] = {
-        function()
-            vim.diagnostic.goto_next()
-        end,
-        "LSP go to next",
+    ["<leader>t"] = {
+        name = "gitsigns",
+
+        b = "Toggle current line blame",
+        d = "Toggle deleted",
     },
 
-    ["]d"] = {
-        function()
-            vim.diagnostic.goto_prev()
-        end,
-        "LSP go to prev",
+    -- lsp
+    ["<leader>l"] = {
+        name = "lsp",
+
+        o = {
+            function()
+                vim.diagnostic.open_float()
+            end,
+            "Show diagnostic of word under",
+        },
+
+        c = {
+            function()
+                vim.lsp.buf.code_action()
+            end,
+            "Code action",
+        },
+
+        r = {
+            function()
+                vim.lsp.buf.rename()
+            end,
+            "Rename all references",
+        },
     },
 
-    ["<leader>vca"] = {
-        function()
-            vim.lsp.buf.code_action()
-        end,
-        "LSP code action",
-    },
 
-    ["<leader>vrr"] = {
-        function()
-            vim.lsp.buf.references()
-        end,
-        "LSP references",
-    },
+    -- telescope
+    [";"] = {
+        name = "telescope",
 
-    ["<leader>vrn"] = {
-        function()
-            vim.lsp.buf.rename()
-        end,
-        "LSP rename",
-    },
-})
+        f = {
+            function()
+                builtin.find_files()
+            end,
+            "Find File"
+        },
 
--- telescope
-wk.register({
-    [";f"] = { "<cmd> Telescope find_files <CR>", "Find files" },
-    [";r"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
-    [";fb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
-    [";xx"] = { "<cmd> Telescope diagnostics<CR>", "Diagnostics" },
+        g = {
+            function()
+                builtin.live_grep()
+            end,
+            "Search String"
+        },
+
+        c = {
+            function()
+                builtin.commands()
+            end,
+            "Search Commands"
+        },
+
+        h = {
+            function()
+                builtin.help_tags()
+            end,
+            "Search Help"
+        },
+
+        r = {
+            function()
+                builtin.registers()
+            end,
+            "Search registers"
+        },
+
+        k = {
+            function()
+                builtin.keymaps()
+            end,
+            "Search keymaps"
+        },
+
+        ["gr"] = {
+            function()
+                builtin.lsp_references()
+            end,
+            "Go to references"
+        },
+
+        ["gd"] = {
+            function()
+                builtin.lsp_definitions()
+            end,
+            "Go to definitions"
+        },
+
+        ["di"] = {
+            function()
+                builtin.diagnostics()
+            end,
+            "Diagnostics"
+        },
+
+        ["gst"] = {
+            function()
+                builtin.git_status()
+            end,
+            "Git status"
+        },
+
+        ["gco"] = {
+            function()
+                builtin.git_commits()
+            end,
+            "Git commit"
+        },
+    },
 })
