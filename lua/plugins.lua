@@ -121,6 +121,11 @@ require("lazy").setup(
             opts = {},
         },
 
+        -- git ignore
+        {
+            'wintermute-cell/gitignore.nvim',
+        },
+
         -- git fugitive
         {
             'tpope/vim-fugitive',
