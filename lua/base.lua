@@ -32,7 +32,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Add color to line cursor is in
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 
 -- Display theme color
 vim.opt.termguicolors = true
