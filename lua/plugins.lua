@@ -116,11 +116,6 @@ require("lazy").setup(
             'tpope/vim-fugitive',
         },
 
-        -- git conflict
-        {
-            "sindrets/diffview.nvim",
-        },
-
         -- gitsigns
         {
             'lewis6991/gitsigns.nvim',
