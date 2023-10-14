@@ -31,6 +31,16 @@ require("lazy").setup(
             build = ':TSUpdate',
         },
 
+        -- sticky scroll
+        {
+            'nvim-treesitter/nvim-treesitter-context',
+            config = function ()
+                require('treesitter-context').setup({
+                    mode = 'topline'
+                })
+            end
+        },
+
         -- status bar
         {
             'nvim-lualine/lualine.nvim',
@@ -150,9 +160,6 @@ require("lazy").setup(
             "kylechui/nvim-surround",
             version = "*",
             event = "VeryLazy",
-            config = function()
-                require("nvim-surround").setup({})
-            end,
         },
 
         -- lsp
