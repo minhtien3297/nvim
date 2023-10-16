@@ -91,6 +91,15 @@ require("lazy").setup(
             opts = {},
         },
 
+        -- fold manager
+        {
+            'kevinhwang91/nvim-ufo',
+            dependencies = {
+                'kevinhwang91/promise-async',
+                'luukvbaal/statuscol.nvim'
+            }
+        },
+
         -- auto pairs
         {
             'windwp/nvim-autopairs',
@@ -112,9 +121,15 @@ require("lazy").setup(
         -- markdown preview
         {
             "iamcco/markdown-preview.nvim",
-            cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+            cmd = {
+                "MarkdownPreviewToggle",
+                "MarkdownPreview",
+                "MarkdownPreviewStop"
+            },
             ft = { "markdown" },
-            build = function() vim.fn["mkdp#util#install"]() end,
+            build = function()
+                vim.fn["mkdp#util#install"]()
+            end,
         },
 
         -- highlight todo
