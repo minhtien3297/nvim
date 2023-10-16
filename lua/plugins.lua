@@ -34,7 +34,7 @@ require("lazy").setup(
         -- sticky scroll
         {
             'nvim-treesitter/nvim-treesitter-context',
-            config = function ()
+            config = function()
                 require('treesitter-context').setup({
                     mode = 'topline'
                 })
@@ -111,7 +111,10 @@ require("lazy").setup(
 
         -- markdown preview
         {
-            'iamcco/markdown-preview.nvim',
+            "iamcco/markdown-preview.nvim",
+            cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+            ft = { "markdown" },
+            build = function() vim.fn["mkdp#util#install"]() end,
         },
 
         -- highlight todo
