@@ -23,6 +23,7 @@ wk.register({
         { ":m '>+1<CR>gv=gv", "Highlight rows down", mode = "v" },
     },
     K = { ":m '<-2<CR>gv=gv", "Highlight rows up", mode = "v" },
+    ["<leader>fo"] = { ":set foldmethod=indent<CR>", "Toggle fold", mode = "n" },
 
     -- nvim tree
     ["<leader>b"] = { "<cmd>NvimTreeToggle<CR>", "Toggle Sidebar" },
