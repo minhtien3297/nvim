@@ -34,11 +34,6 @@ require("lazy").setup(
         -- sticky scroll
         {
             'nvim-treesitter/nvim-treesitter-context',
-            config = function()
-                require('treesitter-context').setup({
-                    mode = 'topline'
-                })
-            end
         },
 
         -- status bar
@@ -64,9 +59,6 @@ require("lazy").setup(
         -- noti
         {
             'rcarriga/nvim-notify',
-            config = function()
-                vim.notify = require('notify')
-            end,
         },
 
         -- file navigation

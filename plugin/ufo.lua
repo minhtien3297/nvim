@@ -1,6 +1,8 @@
-local status, ufo = pcall(require, 'ufo')
+local status_ufo, ufo = pcall(require, 'ufo')
+local status_lspconfig, lspconfig = pcall(require, 'lspconfig')
 
-if not status then return end
+if not status_ufo then return end
+if not status_lspconfig then return end
 
 vim.o.foldcolumn = '1' -- '0' is not bad
 vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
@@ -17,9 +19,9 @@ capabilities.textDocument.foldingRange = {
     lineFoldingOnly = true
 }
 
-local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
+local language_servers = lspconfig.util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
 for _, ls in ipairs(language_servers) do
-    require('lspconfig')[ls].setup({
+    lspconfig[ls].setup({
         capabilities = capabilities
         -- you can add other fields for setting up lsp server in this table
     })

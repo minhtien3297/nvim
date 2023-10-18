@@ -1,6 +1,10 @@
-local builtin = require("statuscol.builtin")
+local status_builtin, builtin = pcall(require, "statuscol.builtin")
+local status_statuscol, statuscol = pcall(require, 'statuscol')
 
-require("statuscol").setup({
+if not status_builtin then return end
+if not status_statuscol then return end
+
+statuscol.setup({
     foldfunc = "builtin",
     setopt = true,
     relculright = true,

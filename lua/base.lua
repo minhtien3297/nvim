@@ -24,6 +24,13 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 
+-- spell check
+vim.opt.spell = true
+vim.opt.spelllang = 'en'
+
+-- turn off mode show in command
+vim.opt.showmode = false
+
 -- Auto wrap line when it's too long
 vim.opt.wrap = true
 

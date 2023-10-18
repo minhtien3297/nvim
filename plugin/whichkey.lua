@@ -1,6 +1,8 @@
-local wk = require("which-key")
+local status_wk, wk = pcall(require, "which-key")
+local status_builtin, builtin = pcall(require, 'telescope.builtin')
 
-local builtin = require('telescope.builtin')
+if not status_wk then return end
+if not status_builtin then return end
 
 wk.setup({
     ignore_missing = true,

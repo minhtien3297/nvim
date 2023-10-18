@@ -1,4 +1,14 @@
-local lsp_zero = require('lsp-zero')
+local status_lsp_zero, lsp_zero = pcall(require, 'lsp-zero')
+local status_mason, mason = pcall(require, 'mason')
+local status_mason_lspconfig, mason_lspconfig = pcall(require, 'mason-lspconfig')
+local status_cmp, cmp = pcall(require, 'cmp')
+local status_lsp_kind, lsp_kind = pcall(require, 'lspkind')
+
+if not status_cmp then return end
+if not status_lsp_kind then return end
+if not status_lsp_zero then return end
+if not status_mason then return end
+if not status_mason_lspconfig then return end
 
 lsp_zero.on_attach(function(client, bufnr)
     -- see :help lsp-zero-keybindings
@@ -6,8 +16,8 @@ lsp_zero.on_attach(function(client, bufnr)
     lsp_zero.default_keymaps({ buffer = bufnr })
 end)
 
-require('mason').setup({})
-require('mason-lspconfig').setup({
+mason.setup({})
+mason_lspconfig.setup({
     ensure_installed = { 'tailwindcss', 'volar', 'grammarly', 'stylelint_lsp', 'lua_ls', 'cssls', 'eslint', 'html',
         'jsonls', 'biome', 'tsserver' },
     automatic_installation = true,
@@ -17,11 +27,11 @@ require('mason-lspconfig').setup({
     },
 })
 
-local cmp = require('cmp')
-
 cmp.setup({
     mapping = cmp.mapping.preset.insert({
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
+        ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
     }),
 
     window = {
@@ -31,7 +41,7 @@ cmp.setup({
 
     formatting = {
         fields = { 'abbr', 'kind', 'menu' },
-        format = require('lspkind').cmp_format({
+        format = lsp_kind.cmp_format({
             mode = 'symbol_text',  -- show only symbol annotations
             maxwidth = 50,         -- prevent the popup from showing more than provided characters
             ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
