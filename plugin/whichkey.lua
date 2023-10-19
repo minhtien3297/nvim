@@ -12,12 +12,7 @@ wk.register({
     -- remap
     ["<leader><space>"] = { ":so<CR>", "Source file" },
     ["<C-q>"] = { "<cmd>q<CR>", "Exit file" },
-    ["<C-f>"] = {
-        function()
-            vim.lsp.buf.format()
-        end,
-        'Format file'
-    },
+    ["<C-f>"] = { "gg<S-v><S-g>=", 'Format file' },
     ["<C-c>"] = { "<Esc>", "Normal Mode", mode = "i" },
     ["<leader>y"] = { [["+y]], "Copy to clipboard", mode = { "n", "v" } },
     J = {
