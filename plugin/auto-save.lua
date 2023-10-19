@@ -14,6 +14,10 @@ vim.api.nvim_create_autocmd('User', {
     group = group,
     callback = function()
         vim.lsp.buf.format()
+
+        if vim.bo.ft == "TelescopePrompt" and vim.fn.mode() == "i" then
+            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "i", false)
+        end
     end,
 })
 
@@ -23,7 +27,7 @@ vim.api.nvim_create_autocmd('User', {
     callback = function(opts)
         if opts.data.saved_buffer ~= nil then
             local filename = vim.api.nvim_buf_get_name(opts.data.saved_buffer)
-            vim.notify("Saved " .. filename .. '', nil, { title = "Autosave" })
+            vim.notify("Saved " .. filename .. '', 'info', { title = "Autosave" })
         end
     end,
 })
