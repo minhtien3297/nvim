@@ -27,7 +27,8 @@ vim.api.nvim_create_autocmd('User', {
     callback = function(opts)
         if opts.data.saved_buffer ~= nil then
             local filename = vim.api.nvim_buf_get_name(opts.data.saved_buffer)
-            vim.notify("Saved " .. filename .. '', 'info', { title = "Autosave" })
+            local savetime = vim.fn.strftime("%H:%M:%S")
+            print("Saved " .. filename .. ' at ' .. savetime)
         end
     end,
 })
