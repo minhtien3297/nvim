@@ -2,16 +2,16 @@ vim.opt.guicursor = ""
 
 -- Replace leader default with space
 vim.g.mapleader = " "
-vim.g.maplocalleader = ' '
+vim.g.maplocalleader = " "
 
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- encoding to utf-8
-vim.scriptencoding = 'utf-8'
-vim.opt.encoding = 'utf-8'
-vim.opt.fileencoding = 'utf-8'
+vim.scriptencoding = "utf-8"
+vim.opt.encoding = "utf-8"
+vim.opt.fileencoding = "utf-8"
 
 -- Display line number and relative line
 vim.opt.nu = true
@@ -26,7 +26,7 @@ vim.opt.smartindent = true
 
 -- spell check
 vim.opt.spell = true
-vim.opt.spelllang = 'en'
+vim.opt.spelllang = "en"
 
 -- turn off mode show in command
 vim.opt.showmode = false
