@@ -46,9 +46,6 @@ mason_lspconfig.setup({
 		"jsonls",
 		"tsserver",
 		"taplo",
-		"stylua",
-		"prettier",
-		"shfmt",
 	},
 
 	automatic_installation = true,
