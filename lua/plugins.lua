@@ -72,6 +72,9 @@ require("lazy").setup({
     -- highlight color
     {
         "norcalli/nvim-colorizer.lua",
+        config = function()
+            require("colorizer").setup()
+        end,
     },
 
     -- highlight indent
