@@ -24,6 +24,13 @@ require("lazy").setup({
         end,
     },
 
+    -- ui input and select
+    {
+        "stevearc/dressing.nvim",
+        event = "VeryLazy",
+        opts = {},
+    },
+
     -- tag highlight
     {
         "nvim-treesitter/nvim-treesitter",
