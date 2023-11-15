@@ -26,7 +26,7 @@ wk.register({
 	K = { ":m '<-2<CR>gv=gv", "Highlight rows up", mode = "v" },
 
 	-- nvim tree
-	["<leader>b"] = { "<cmd>NvimTreeToggle<CR>", "Toggle Sidebar" },
+	[";;"] = { "<cmd>NvimTreeToggle<CR>", "Toggle Tree" },
 
 	-- git fugitive
 	["<leader>f"] = {
