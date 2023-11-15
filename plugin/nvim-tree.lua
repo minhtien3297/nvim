@@ -23,11 +23,57 @@ local function open_nvim_tree(data)
 		return
 	end
 
-	-- open the tree, find the file but don't focus it
+	-- open the tree, find the file
 	api.tree.toggle({ focus = true, find_file = true })
 end
 
+local function my_on_attach(bufnr)
+	local function opts(desc)
+		return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+	end
+
+	local function edit_or_open()
+		local node = api.tree.get_node_under_cursor()
+
+		if node.nodes ~= nil then
+			-- expand or collapse folder
+			api.node.open.edit()
+		else
+			-- open file
+			api.node.open.edit()
+			-- Close the tree if file was opened
+			api.tree.close()
+		end
+	end
+
+	-- open as vsplit on current node
+	local function vsplit_preview()
+		local node = api.tree.get_node_under_cursor()
+
+		if node.nodes ~= nil then
+			-- expand or collapse folder
+			api.node.open.edit()
+		else
+			-- open file as vsplit
+			api.node.open.vertical()
+		end
+
+		-- Finally refocus on tree if it was lost
+		api.tree.focus()
+	end
+
+	-- default mapping
+	api.config.mappings.default_on_attach(bufnr)
+
+	vim.keymap.set("n", "?", api.tree.toggle_help, opts("Toggle Help"))
+	vim.keymap.set("n", "l", edit_or_open, opts("Edit Or Open"))
+	vim.keymap.set("n", "L", vsplit_preview, opts("Vsplit Preview"))
+	vim.keymap.set("n", "h", api.tree.collapse_all, opts("Collapse All"))
+end
+
 nvim_tree.setup({
+	on_attach = my_on_attach,
+
 	filters = {
 		dotfiles = false, -- show dot files
 		custom = { "^.git$" }, -- hide git folder
