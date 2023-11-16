@@ -1,9 +1,17 @@
 local status_lsp_zero, lsp_zero = pcall(require, "lsp-zero")
 local status_lspconfig, lspconfig = pcall(require, "lspconfig")
+local status_lsp_format, lsp_format = pcall(require, "lsp-format")
+local status_inlayhint, inlayhint = pcall(require, "lsp-inlayhints")
 local status_mason, mason = pcall(require, "mason")
 local status_mason_lspconfig, mason_lspconfig = pcall(require, "mason-lspconfig")
 
 if not status_lsp_zero then
+    return
+end
+if not status_inlayhint then
+    return
+end
+if not status_lsp_format then
     return
 end
 if not status_lspconfig then
@@ -16,8 +24,14 @@ if not status_mason_lspconfig then
     return
 end
 
+inlayhint.setup()
+
 lsp_zero.on_attach(function(client, bufnr)
     lsp_zero.default_keymaps({ buffer = bufnr })
+
+    if client.supports_method('textDocument/formatting') then
+        lsp_format.on_attach(client)
+    end
 end)
 
 lsp_zero.set_sign_icons({
@@ -80,5 +94,52 @@ mason_lspconfig.setup({
                 },
             })
         end,
+
+        lspconfig.tsserver.setup({
+            on_attach = function(client, bufnr)
+                inlayhint.on_attach(client, bufnr)
+            end,
+
+            settings = {
+                typescript = {
+                    inlayHints = {
+                        includeInlayParameterNameHints = 'all',
+                        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                        includeInlayFunctionParameterTypeHints = true,
+                        includeInlayVariableTypeHints = true,
+                        includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+                        includeInlayPropertyDeclarationTypeHints = true,
+                        includeInlayFunctionLikeReturnTypeHints = true,
+                        includeInlayEnumMemberValueHints = true,
+                    }
+                },
+                javascript = {
+                    inlayHints = {
+                        includeInlayParameterNameHints = 'all',
+                        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                        includeInlayFunctionParameterTypeHints = true,
+                        includeInlayVariableTypeHints = true,
+                        includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+                        includeInlayPropertyDeclarationTypeHints = true,
+                        includeInlayFunctionLikeReturnTypeHints = true,
+                        includeInlayEnumMemberValueHints = true,
+                    }
+                }
+            }
+        }),
+
+        lspconfig.lua_ls.setup({
+            on_attach = function(client, bufnr)
+                inlayhint.on_attach(client, bufnr)
+            end,
+
+            settings = {
+                Lua = {
+                    hint = {
+                        enable = true,
+                    },
+                },
+            },
+        })
     },
 })

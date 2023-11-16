@@ -2,169 +2,169 @@ local status_wk, wk = pcall(require, "which-key")
 local status_builtin, builtin = pcall(require, "telescope.builtin")
 
 if not status_wk then
-	return
+    return
 end
 if not status_builtin then
-	return
+    return
 end
 
 wk.setup({
-	ignore_missing = true,
+    ignore_missing = true,
 })
 
 wk.register({
-	-- remap
-	["<leader><space>"] = { ":so<CR>", "Source file" },
-	["<C-q>"] = { "<cmd>q<CR>", "Exit file" },
-	["<C-f>"] = { "gg<S-v><S-g>=", "Format file" },
-	["<C-c>"] = { "<Esc>", "Normal Mode", mode = "i" },
-	["<leader>y"] = { [["+y]], "Copy to clipboard", mode = { "n", "v" } },
-	J = {
-		{ "mzJ`z", "Cut line eazier", mode = "n" },
-		{ ":m '>+1<CR>gv=gv", "Highlight rows down", mode = "v" },
-	},
-	K = { ":m '<-2<CR>gv=gv", "Highlight rows up", mode = "v" },
+    -- remap
+    ["<leader><space>"] = { ":so<CR>", "Source file" },
+    ["<C-q>"] = { "<cmd>q<CR>", "Exit file" },
+    ["<C-f>"] = { "magg<S-v><S-g>=`a", "Format file" },
+    ["<C-c>"] = { "<Esc>", "Normal Mode", mode = "i" },
+    ["<C-y>"] = { [["+y]], "Copy to clipboard", mode = { "n", "v" } },
+    J = {
+        { "mzJ`z",            "Cut line eazier",     mode = "n" },
+        { ":m '>+1<CR>gv=gv", "Highlight rows down", mode = "v" },
+    },
+    K = { ":m '<-2<CR>gv=gv", "Highlight rows up", mode = "v" },
 
-	-- nvim tree
-	[";;"] = { "<cmd>NvimTreeToggle<CR>", "Toggle Tree" },
+    -- nvim tree
+    [";;"] = { "<cmd>NvimTreeToggle<CR>", "Toggle Tree" },
 
-	-- git fugitive
-	["<leader>f"] = {
-		name = "fugitive",
+    -- git fugitive
+    ["<leader>f"] = {
+        name = "fugitive",
 
-		function()
-			vim.cmd.Git()
-		end,
-		"Fugitive",
-	},
+        function()
+            vim.cmd.Git()
+        end,
+        "Fugitive",
+    },
 
-	-- gitsigns
-	["<leader>h"] = {
-		name = "gitsigns",
+    -- gitsigns
+    ["<leader>h"] = {
+        name = "gitsigns",
 
-		s = "Stage Hunk",
-		r = "Reset Hunk",
-		S = "Stage Buffer",
-		u = "Undo Stage Hunk",
-		R = "Reset Buffer",
-		p = "Preview Hunk",
-		b = "Blame Line Full",
-		d = "Diff This",
-		D = "Diff This ~",
-	},
+        s = "Stage Hunk",
+        r = "Reset Hunk",
+        S = "Stage Buffer",
+        u = "Undo Stage Hunk",
+        R = "Reset Buffer",
+        p = "Preview Hunk",
+        b = "Blame Line Full",
+        d = "Diff This",
+        D = "Diff This ~",
+    },
 
-	["<leader>t"] = {
-		name = "gitsigns",
+    ["<leader>t"] = {
+        name = "gitsigns",
 
-		b = "Toggle current line blame",
-		d = "Toggle deleted",
-	},
+        b = "Toggle current line blame",
+        d = "Toggle deleted",
+    },
 
-	-- lsp
-	["<leader>l"] = {
-		name = "lsp",
+    -- lsp
+    ["<leader>l"] = {
+        name = "lsp",
 
-		o = {
-			function()
-				vim.diagnostic.open_float()
-			end,
-			"Show diagnostic of word under",
-		},
+        o = {
+            function()
+                vim.diagnostic.open_float()
+            end,
+            "Show diagnostic of word under",
+        },
 
-		c = {
-			function()
-				vim.lsp.buf.code_action()
-			end,
-			"Code action",
-		},
+        c = {
+            function()
+                vim.lsp.buf.code_action()
+            end,
+            "Code action",
+        },
 
-		r = {
-			function()
-				vim.lsp.buf.rename()
-			end,
-			"Rename all references",
-		},
-	},
+        r = {
+            function()
+                vim.lsp.buf.rename()
+            end,
+            "Rename all references",
+        },
+    },
 
-	-- telescope
-	[";"] = {
-		name = "telescope",
+    -- telescope
+    [";"] = {
+        name = "telescope",
 
-		f = {
-			function()
-				builtin.find_files()
-			end,
-			"Find File",
-		},
+        f = {
+            function()
+                builtin.find_files()
+            end,
+            "Find File",
+        },
 
-		g = {
-			function()
-				builtin.live_grep()
-			end,
-			"Search String",
-		},
+        g = {
+            function()
+                builtin.live_grep()
+            end,
+            "Search String",
+        },
 
-		c = {
-			function()
-				builtin.commands()
-			end,
-			"Search Commands",
-		},
+        c = {
+            function()
+                builtin.commands()
+            end,
+            "Search Commands",
+        },
 
-		h = {
-			function()
-				builtin.help_tags()
-			end,
-			"Search Help",
-		},
+        h = {
+            function()
+                builtin.help_tags()
+            end,
+            "Search Help",
+        },
 
-		r = {
-			function()
-				builtin.registers()
-			end,
-			"Search registers",
-		},
+        r = {
+            function()
+                builtin.registers()
+            end,
+            "Search registers",
+        },
 
-		k = {
-			function()
-				builtin.keymaps()
-			end,
-			"Search keymaps",
-		},
+        k = {
+            function()
+                builtin.keymaps()
+            end,
+            "Search keymaps",
+        },
 
-		["gr"] = {
-			function()
-				builtin.lsp_references()
-			end,
-			"Go to references",
-		},
+        ["gr"] = {
+            function()
+                builtin.lsp_references()
+            end,
+            "Go to references",
+        },
 
-		["gd"] = {
-			function()
-				builtin.lsp_definitions()
-			end,
-			"Go to definitions",
-		},
+        ["gd"] = {
+            function()
+                builtin.lsp_definitions()
+            end,
+            "Go to definitions",
+        },
 
-		["di"] = {
-			function()
-				builtin.diagnostics()
-			end,
-			"Diagnostics",
-		},
+        ["di"] = {
+            function()
+                builtin.diagnostics()
+            end,
+            "Diagnostics",
+        },
 
-		["gst"] = {
-			function()
-				builtin.git_status()
-			end,
-			"Git status",
-		},
+        ["gst"] = {
+            function()
+                builtin.git_status()
+            end,
+            "Git status",
+        },
 
-		["gco"] = {
-			function()
-				builtin.git_commits()
-			end,
-			"Git commit",
-		},
-	},
+        ["gco"] = {
+            function()
+                builtin.git_commits()
+            end,
+            "Git commit",
+        },
+    },
 })
