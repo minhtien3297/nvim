@@ -68,7 +68,7 @@ local function my_on_attach(bufnr)
 	vim.keymap.set("n", "?", api.tree.toggle_help, opts("Toggle Help"))
 	vim.keymap.set("n", "l", edit_or_open, opts("Edit Or Open"))
 	vim.keymap.set("n", "L", vsplit_preview, opts("Vsplit Preview"))
-	vim.keymap.set("n", "h", api.tree.collapse_all, opts("Collapse All"))
+	vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Collapse"))
 end
 
 nvim_tree.setup({
