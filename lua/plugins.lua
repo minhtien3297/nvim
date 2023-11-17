@@ -103,11 +103,21 @@ require("lazy").setup({
     -- smooth scroll
     {
         "karb94/neoscroll.nvim",
+        config = function()
+            require('neoscroll').setup {}
+        end
     },
 
     -- Comment
     {
         "numToStr/Comment.nvim",
+        opts = {},
+    },
+
+    -- Hard time
+    {
+        "m4xshen/hardtime.nvim",
+        dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
         opts = {},
     },
 
@@ -122,6 +132,20 @@ require("lazy").setup({
         ft = { "markdown" },
         build = function()
             vim.fn["mkdp#util#install"]()
+        end,
+    },
+
+    -- leetcode
+    {
+        "Dhanus3133/LeetBuddy.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim",
+        },
+        config = function()
+            require("leetbuddy").setup({
+                language = "js",
+            })
         end,
     },
 
@@ -145,11 +169,6 @@ require("lazy").setup({
     -- gitsigns
     {
         "lewis6991/gitsigns.nvim",
-    },
-
-    -- tmux navigator
-    {
-        "christoomey/vim-tmux-navigator",
     },
 
     -- editor configs
@@ -182,10 +201,12 @@ require("lazy").setup({
     },
 
     -- auto focus pane
-    { "nvim-focus/focus.nvim",    version = '*' },
+    { "nvim-focus/focus.nvim",   version = '*' },
 
     -- hightlight searching pattern
-    { "kevinhwang91/nvim-hlslens" },
+    {
+        "kevinhwang91/nvim-hlslens",
+    },
 
     -- search and replace
     {
@@ -205,10 +226,14 @@ require("lazy").setup({
         dependencies = { "MunifTanjim/nui.nvim" },
         config = function()
             require('package-info').setup({
-                colors = {
-                    up_to_date = "#00FF00",
-                    outdated = "#FF0000", -- Text color for outdated dependency virtual text
+                icons = {
+                    enable = true,
+                    style = {
+                        outdated = " | ",
+                    }
                 },
+                hide_up_to_date = true,
+                hide_unstable_versions = true,
             })
         end,
     },
