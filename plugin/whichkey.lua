@@ -2,9 +2,11 @@ local status_wk, wk = pcall(require, "which-key")
 local status_builtin, builtin = pcall(require, "telescope.builtin")
 
 if not status_wk then
+    vim.notify('which-key error')
     return
 end
 if not status_builtin then
+    vim.notify('telescope.builtin error')
     return
 end
 

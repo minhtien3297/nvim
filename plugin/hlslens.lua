@@ -1,6 +1,7 @@
 local status, lens = pcall(require, "hlslens")
 
 if not status then
+    vim.notify('hlslens error')
     return
 end
 

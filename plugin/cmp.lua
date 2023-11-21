@@ -4,15 +4,19 @@ local status_vs_snip, vs_snip = pcall(require, "luasnip.loaders.from_vscode")
 local status_lsp_kind, lsp_kind = pcall(require, "lspkind")
 
 if not status_lsp_zero then
+    vim.notify('lsp-zero error')
     return
 end
 if not status_lsp_kind then
+    vim.notify('lsp-kind error')
     return
 end
 if not status_cmp then
+    vim.notify('cmp error')
     return
 end
 if not status_vs_snip then
+    vim.notify('vs_snip error')
     return
 end
 

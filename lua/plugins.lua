@@ -38,14 +38,10 @@ require("lazy").setup({
     },
 
     -- sticky scroll
-    {
-        "nvim-treesitter/nvim-treesitter-context",
-    },
+    { "nvim-treesitter/nvim-treesitter-context", },
 
     -- status bar
-    {
-        "nvim-lualine/lualine.nvim",
-    },
+    { "nvim-lualine/lualine.nvim", },
 
     -- find files
     {
@@ -55,27 +51,16 @@ require("lazy").setup({
     },
 
     -- noti
-    {
-        "rcarriga/nvim-notify",
-    },
+    { "rcarriga/nvim-notify", },
 
     -- file navigation
-    {
-        "ThePrimeagen/harpoon",
-    },
+    { "ThePrimeagen/harpoon", },
 
     -- file icons
-    {
-        "nvim-tree/nvim-web-devicons",
-    },
+    { "nvim-tree/nvim-web-devicons", },
 
     -- highlight color
-    {
-        "norcalli/nvim-colorizer.lua",
-        config = function()
-            require("colorizer").setup()
-        end,
-    },
+    { "norcalli/nvim-colorizer.lua", },
 
     -- highlight indent
     {
@@ -101,12 +86,7 @@ require("lazy").setup({
     },
 
     -- smooth scroll
-    {
-        "karb94/neoscroll.nvim",
-        config = function()
-            require('neoscroll').setup {}
-        end
-    },
+    { "karb94/neoscroll.nvim", },
 
     -- Comment
     {
@@ -142,11 +122,6 @@ require("lazy").setup({
             "nvim-lua/plenary.nvim",
             "nvim-telescope/telescope.nvim",
         },
-        config = function()
-            require("leetbuddy").setup({
-                language = "js",
-            })
-        end,
     },
 
     -- highlight todo
@@ -157,29 +132,19 @@ require("lazy").setup({
     },
 
     -- git ignore
-    {
-        "wintermute-cell/gitignore.nvim",
-    },
+    { "wintermute-cell/gitignore.nvim", },
 
     -- git fugitive
-    {
-        "tpope/vim-fugitive",
-    },
+    { "tpope/vim-fugitive", },
 
     -- gitsigns
-    {
-        "lewis6991/gitsigns.nvim",
-    },
+    { "lewis6991/gitsigns.nvim", },
 
     -- editor configs
-    {
-        "editorconfig/editorconfig-vim",
-    },
+    { "editorconfig/editorconfig-vim", },
 
     -- command lsp
-    {
-        "gelguy/wilder.nvim",
-    },
+    { "gelguy/wilder.nvim", },
 
     -- folder tree
     {
@@ -195,18 +160,13 @@ require("lazy").setup({
         "kylechui/nvim-surround",
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
         event = "VeryLazy",
-        config = function()
-            require("nvim-surround").setup({})
-        end,
     },
 
     -- auto focus pane
-    { "nvim-focus/focus.nvim",   version = '*' },
+    { "nvim-focus/focus.nvim",     version = '*' },
 
     -- hightlight searching pattern
-    {
-        "kevinhwang91/nvim-hlslens",
-    },
+    { "kevinhwang91/nvim-hlslens", },
 
     -- search and replace
     {
@@ -217,25 +177,10 @@ require("lazy").setup({
     -- dim inactive pane
     { "sunjon/shade.nvim" },
 
-    -- highlight word and line
-    { "yamatsum/nvim-cursorline" },
-
     -- show outdated package
     {
         "vuki656/package-info.nvim",
         dependencies = { "MunifTanjim/nui.nvim" },
-        config = function()
-            require('package-info').setup({
-                icons = {
-                    enable = true,
-                    style = {
-                        outdated = " | ",
-                    }
-                },
-                hide_up_to_date = true,
-                hide_unstable_versions = true,
-            })
-        end,
     },
 
     -- auto save
@@ -255,7 +200,6 @@ require("lazy").setup({
         { "VonHeikemen/lsp-zero.nvim",        branch = "v3.x" },
         { "onsails/lspkind.nvim" },
         { "lukas-reineke/lsp-format.nvim" },
-        { 'lvimuser/lsp-inlayhints.nvim' },
         {
             "hinell/lsp-timeout.nvim",
             dependencies = { "neovim/nvim-lspconfig" }

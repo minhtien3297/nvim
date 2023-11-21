@@ -1,6 +1,7 @@
 local status, focus = pcall(require, "focus")
 
 if not status then
+    vim.notify('focus error')
     return
 end
 
