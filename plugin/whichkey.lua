@@ -18,7 +18,7 @@ wk.register({
     -- remap
     ["<leader><space>"] = { ":so<CR>", "Source file" },
     ["<C-q>"] = { "<cmd>q<CR>", "Exit file" },
-    ["<C-f>"] = { "magg<S-v><S-g>=`a", "Format file" },
+    ["<C-f>"] = { "magg=<S-g>`a", "Format file" },
     ["<C-c>"] = { "<Esc>", "Normal Mode", mode = "i" },
     ["<C-y>"] = { [["+y]], "Copy to clipboard", mode = { "n", "v" } },
     J = {
@@ -119,6 +119,14 @@ wk.register({
             end,
             "Search Help",
         },
+
+        n = {
+            function()
+                vim.cmd.Telescope "notify"
+            end,
+            "Search Notifications",
+        },
+
 
         r = {
             function()
