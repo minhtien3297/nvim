@@ -8,7 +8,7 @@ end
 lualine.setup({
     options = {
         icons_enabled = true,
-        theme = "palenight",
+        theme = "catppuccin",
         component_separators = " ",
         section_separators = "",
     },
@@ -39,11 +39,6 @@ lualine.setup({
                     warn = "▲ ",
                     hint = "⚑ ",
                     info = "» ",
-                },
-                diagnostics_color = {
-                    color_error = { fg = "#ec5f67" },
-                    color_warn = { fg = "#ECBE7B" },
-                    color_info = { fg = "#008080" },
                 },
                 colored = true,
                 update_in_insert = true,

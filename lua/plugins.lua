@@ -19,9 +19,6 @@ require("lazy").setup({
         "catppuccin/nvim",
         name = "catppuccin",
         priority = 1000,
-        config = function()
-            vim.cmd([[colorscheme catppuccin-mocha]])
-        end,
     },
 
     -- ui input and select
@@ -52,6 +49,9 @@ require("lazy").setup({
 
     -- noti
     { "rcarriga/nvim-notify", },
+
+    -- smooth scroll
+    { "karb94/neoscroll.nvim", },
 
     -- file navigation
     { "ThePrimeagen/harpoon", },
@@ -84,9 +84,6 @@ require("lazy").setup({
         event = "InsertEnter",
         opts = {},
     },
-
-    -- smooth scroll
-    { "karb94/neoscroll.nvim", },
 
     -- Comment
     {
@@ -163,7 +160,10 @@ require("lazy").setup({
     },
 
     -- auto focus pane
-    { "nvim-focus/focus.nvim",     version = '*' },
+    {
+        "nvim-focus/focus.nvim",
+        version = '*'
+    },
 
     -- hightlight searching pattern
     { "kevinhwang91/nvim-hlslens", },
@@ -173,9 +173,6 @@ require("lazy").setup({
         "AckslD/muren.nvim",
         config = true,
     },
-
-    -- dim inactive pane
-    { "sunjon/shade.nvim" },
 
     -- show outdated package
     {

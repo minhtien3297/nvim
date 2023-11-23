@@ -11,7 +11,7 @@ if not status_mark then
 end
 
 vim.keymap.set("n", "<C-a>", mark.add_file)
-vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
+vim.keymap.set("n", "<leader>e", ui.toggle_quick_menu)
 vim.keymap.set("n", "<C-n>", ui.nav_next)
 vim.keymap.set("n", "<C-p>", ui.nav_prev)
 
