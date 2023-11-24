@@ -120,6 +120,13 @@ wk.register({
             "Search Help",
         },
 
+        l = {
+            function()
+                vim.cmd.Telescope "lazy"
+            end,
+            "Search Lazy plugins",
+        },
+
         n = {
             function()
                 vim.cmd.Telescope "notify"
@@ -140,6 +147,13 @@ wk.register({
                 builtin.keymaps()
             end,
             "Search keymaps",
+        },
+
+        m = {
+            function()
+                vim.cmd.Telescope "media_files"
+            end,
+            "Search media files",
         },
 
         ["gr"] = {

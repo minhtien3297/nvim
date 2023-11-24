@@ -40,11 +40,16 @@ require("lazy").setup({
     -- status bar
     { "nvim-lualine/lualine.nvim", },
 
-    -- find files
+    -- telescope
     {
         "nvim-telescope/telescope.nvim",
         tag = "0.1.4",
-        dependencies = { "nvim-lua/plenary.nvim" },
+        dependencies = {
+            "nvim-lua/plenary.nvim" ,
+            "tsakirist/telescope-lazy.nvim",
+            "nvim-lua/popup.nvim",
+            "nvim-telescope/telescope-media-files.nvim"
+        },
     },
 
     -- noti
@@ -157,6 +162,11 @@ require("lazy").setup({
         "kylechui/nvim-surround",
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
         event = "VeryLazy",
+    },
+
+    -- vimwiki
+    {
+        "vimwiki/vimwiki",
     },
 
     -- auto focus pane

@@ -8,6 +8,7 @@ end
 treesitter.setup({
     ensure_installed = {
         "lua",
+        "luadoc",
         "html",
         "css",
         "scss",
@@ -26,9 +27,14 @@ treesitter.setup({
         "tsx",
         "javascript",
         "markdown",
+        "markdown_inline",
         "typescript",
+        "comment",
         "vim",
         "bash",
+        "regex",
+        "php",
+        "ruby"
     },
 
     highlight = { enable = true },
