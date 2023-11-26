@@ -45,7 +45,7 @@ require("lazy").setup({
         "nvim-telescope/telescope.nvim",
         tag = "0.1.4",
         dependencies = {
-            "nvim-lua/plenary.nvim" ,
+            "nvim-lua/plenary.nvim",
             "tsakirist/telescope-lazy.nvim",
             "nvim-lua/popup.nvim",
             "nvim-telescope/telescope-media-files.nvim"
@@ -164,9 +164,15 @@ require("lazy").setup({
         event = "VeryLazy",
     },
 
-    -- vimwiki
+    -- obsidian
     {
-        "vimwiki/vimwiki",
+        "epwalsh/obsidian.nvim",
+        version = "*", -- recommended, use latest release instead of latest commit
+        lazy = true,
+        ft = "markdown",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
     },
 
     -- auto focus pane

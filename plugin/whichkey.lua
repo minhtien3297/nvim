@@ -30,6 +30,20 @@ wk.register({
     -- nvim tree
     [";;"] = { "<cmd>NvimTreeToggle<CR>", "Toggle Tree" },
 
+    -- Markdown Preview
+    ["<C-e>"] = { "<cmd>MarkdownPreviewToggle<CR>", "Toggle Markdown Preview" },
+
+    -- Obsidian
+    ["<leader>o"] = {
+        name = "Obsidian",
+
+        o = { "<cmd>ObsidianOpen<CR>", "Open Obsidian", },
+        n = { "<cmd>ObsidianNew<CR>", "New note", },
+        q = { "<cmd>ObsidianQuickSwitch<CR>", "Search note", },
+        b = { "<cmd>ObsidianBackLinks<CR>", "List Back Links", },
+        s = { "<cmd>ObsidianSearch<CR>", "Search string", },
+    },
+
     -- git fugitive
     ["<leader>f"] = {
         name = "fugitive",
