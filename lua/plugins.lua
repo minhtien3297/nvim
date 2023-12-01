@@ -216,6 +216,9 @@ require("lazy").setup({
         opts = {},
     },
 
+    -- tmux navigation
+    {'christoomey/vim-tmux-navigator'},
+
     -- lsp
     {
         { "williamboman/mason.nvim" },
