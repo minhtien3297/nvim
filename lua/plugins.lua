@@ -139,6 +139,9 @@ require("lazy").setup({
     -- git fugitive
     { "tpope/vim-fugitive", },
 
+    -- nvim session
+    { 'rmagatti/auto-session', },
+
     -- gitsigns
     { "lewis6991/gitsigns.nvim", },
 
@@ -217,7 +220,7 @@ require("lazy").setup({
     },
 
     -- tmux navigation
-    {'christoomey/vim-tmux-navigator'},
+    { 'christoomey/vim-tmux-navigator' },
 
     -- lsp
     {

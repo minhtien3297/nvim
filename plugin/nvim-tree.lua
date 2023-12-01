@@ -190,4 +190,4 @@ api.events.subscribe(api.events.Event.FileCreated, function(file)
     vim.cmd("edit " .. file.fname)
 end)
 
-vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+-- vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })

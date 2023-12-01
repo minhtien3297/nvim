@@ -1,4 +1,10 @@
 local status, lualine = pcall(require, "lualine")
+local status_session, session = pcall(require, 'auto-session.lib')
+
+if not status_session then
+    vim.notify('auto-session error')
+    return
+end
 
 if not status then
     vim.notify('lualine error')
@@ -44,6 +50,17 @@ lualine.setup({
                 update_in_insert = true,
                 always_visible = false,
             },
+
+            {
+                function()
+                    if not session.current_session_name then
+                        return 'No Session'
+                    end
+
+                    return session.current_session_name()
+                end,
+                color = { fg = "#ffffff", gui = "bold" },
+            }
         },
 
         lualine_x = {
