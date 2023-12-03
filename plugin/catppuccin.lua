@@ -30,7 +30,7 @@ cat.setup({
         indent_blankline = {
             enabled = true,
             scope_color = "", -- catppuccin color (eg. `lavender`) Default: text
-            colored_indent_levels = false,
+            colored_indent_levels = true,
         },
         mason = true,
         native_lsp = {

@@ -42,7 +42,7 @@ vim.o.smartcase = true
 vim.opt.cursorline = true
 
 -- Display theme color
-vim.opt.termguicolors = true
+vim.o.termguicolors = true
 
 -- decrease speed run command
 vim.opt.timeoutlen = 250
