@@ -136,14 +136,19 @@ require("lazy").setup({
     -- git ignore
     { "wintermute-cell/gitignore.nvim", },
 
-    -- git fugitive
-    { "tpope/vim-fugitive", },
+    -- git blame line
+    { 'f-person/git-blame.nvim', },
+
+    -- lazygit
+    {
+        "kdheepak/lazygit.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+    },
 
     -- nvim session
     { 'rmagatti/auto-session', },
-
-    -- gitsigns
-    { "lewis6991/gitsigns.nvim", },
 
     -- editor configs
     { "editorconfig/editorconfig-vim", },

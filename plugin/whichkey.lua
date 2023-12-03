@@ -44,36 +44,12 @@ wk.register({
         s = { "<cmd>ObsidianSearch<CR>", "Search string", },
     },
 
-    -- git fugitive
+    -- lazygit
     ["<leader>f"] = {
-        name = "fugitive",
+        name = "lazygit",
 
-        function()
-            vim.cmd.Git()
-        end,
-        "Fugitive",
-    },
-
-    -- gitsigns
-    ["<leader>h"] = {
-        name = "gitsigns",
-
-        s = "Stage Hunk",
-        r = "Reset Hunk",
-        S = "Stage Buffer",
-        u = "Undo Stage Hunk",
-        R = "Reset Buffer",
-        p = "Preview Hunk",
-        b = "Blame Line Full",
-        d = "Diff This",
-        D = "Diff This ~",
-    },
-
-    ["<leader>t"] = {
-        name = "gitsigns",
-
-        b = "Toggle current line blame",
-        d = "Toggle deleted",
+        "<cmd>LazyGit<CR>",
+        "LazyGit",
     },
 
     -- lsp
