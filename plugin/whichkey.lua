@@ -40,7 +40,7 @@ wk.register({
         o = { "<cmd>ObsidianOpen<CR>", "Open Obsidian", },
         n = { "<cmd>ObsidianNew<CR>", "New note", },
         q = { "<cmd>ObsidianQuickSwitch<CR>", "Search note", },
-        b = { "<cmd>ObsidianBackLinks<CR>", "List Back Links", },
+        b = { "<cmd>ObsidianBacklinks<CR>", "List Back Links", },
         s = { "<cmd>ObsidianSearch<CR>", "Search string", },
     },
 
