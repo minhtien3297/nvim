@@ -27,10 +27,6 @@ end
 
 lsp_zero.on_attach(function(client, bufnr)
     lsp_zero.default_keymaps({ buffer = bufnr })
-
-    if client.supports_method('textDocument/formatting') then
-        lsp_format.on_attach(client)
-    end
 end)
 
 lsp_zero.set_sign_icons({
