@@ -55,7 +55,6 @@ local servers = {
     "grammarly",
     "html",
     "cssls",
-    "tailwindcss",
     "vuels",
     "volar",
     "stylelint_lsp",
