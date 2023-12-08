@@ -48,12 +48,12 @@ mason.setup({
 
 local servers = {
     "lua_ls",
-    "grammarly",
+    "bashls",
+    "marksman",
+    "hydra_lsp",
     "html",
     "cssls",
-    "vuels",
     "volar",
-    "stylelint_lsp",
     "tsserver",
     "jsonls",
     "taplo",
