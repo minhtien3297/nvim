@@ -33,7 +33,7 @@ lsp_zero.on_attach(function(client, bufnr)
   if client.supports_method('textDocument/formatting') then
     lsp_format.on_attach(client)
   else
-    vim.cmd("magg=<S-g>`a")
+    vim.cmd("normal! magg=<S-g>`a" .. "<CR>")
   end
 end)
 
