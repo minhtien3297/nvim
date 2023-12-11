@@ -5,85 +5,93 @@ local status_mason, mason = pcall(require, "mason")
 local status_mason_lspconfig, mason_lspconfig = pcall(require, "mason-lspconfig")
 
 if not status_lsp_zero then
-    vim.notify('lsp_zero error')
-    return
+  vim.notify('lsp_zero error')
+  return
 end
 if not status_lsp_format then
-    vim.notify('lsp_format error')
-    return
+  vim.notify('lsp_format error')
+  return
 end
 if not status_lspconfig then
-    vim.notify('lspconfig error')
-    return
+  vim.notify('lspconfig error')
+  return
 end
 if not status_mason then
-    vim.notify('mason error')
-    return
+  vim.notify('mason error')
+  return
 end
 if not status_mason_lspconfig then
-    vim.notify('mason_lspconfig error')
-    return
+  vim.notify('mason_lspconfig error')
+  return
 end
 
 lsp_zero.on_attach(function(client, bufnr)
-    lsp_zero.default_keymaps({ buffer = bufnr })
+  lsp_zero.default_keymaps({ buffer = bufnr })
+
+  -- make sure you use clients with formatting capabilities
+  -- otherwise you'll get a warning message
+  if client.supports_method('textDocument/formatting') then
+    lsp_format.on_attach(client)
+  else
+    vim.cmd("magg=<S-g>`a")
+  end
 end)
 
 lsp_zero.set_sign_icons({
-    error = " ✘",
-    warn = " ▲",
-    hint = " ⚑",
-    info = " »",
+  error = " ✘",
+  warn = " ▲",
+  hint = " ⚑",
+  info = " »",
 })
 
 mason.setup({
-    ui = {
-        icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗",
-        },
+  ui = {
+    icons = {
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗",
     },
+  },
 })
 
 local servers = {
-    "lua_ls",
-    "bashls",
-    "marksman",
-    "hydra_lsp",
-    "html",
-    "cssls",
-    "volar",
-    "tsserver",
-    "jsonls",
-    "taplo",
+  "lua_ls",
+  "bashls",
+  "marksman",
+  "hydra_lsp",
+  "html",
+  "cssls",
+  "volar",
+  "tsserver",
+  "jsonls",
+  "taplo",
 }
 
 local function organize_imports()
-    local params = {
-        command = "_typescript.organizeImports",
-        arguments = { vim.api.nvim_buf_get_name(0) },
-    }
+  local params = {
+    command = "_typescript.organizeImports",
+    arguments = { vim.api.nvim_buf_get_name(0) },
+  }
 
-    vim.lsp.buf.execute_command(params)
+  vim.lsp.buf.execute_command(params)
 end
 
 mason_lspconfig.setup({
-    ensure_installed = servers,
-    automatic_installation = true,
+  ensure_installed = servers,
+  automatic_installation = true,
 
-    handlers = {
-        lsp_zero.default_setup,
+  handlers = {
+    lsp_zero.default_setup,
 
-        ["tsserver"] = function()
-            lspconfig.tsserver.setup({
-                commands = {
-                    OrganizeImports = {
-                        organize_imports,
-                        description = "Organize Imports",
-                    },
-                },
-            })
-        end,
-    },
+    ["tsserver"] = function()
+      lspconfig.tsserver.setup({
+        commands = {
+          OrganizeImports = {
+            organize_imports,
+            description = "Organize Imports",
+          },
+        },
+      })
+    end,
+  },
 })
