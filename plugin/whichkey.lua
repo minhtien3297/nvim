@@ -30,6 +30,9 @@ wk.register({
   -- nvim tree
   [";;"] = { "<cmd>NvimTreeToggle<CR>", "Toggle Tree" },
 
+  -- muren
+  [";m"] = { "<cmd>MurenToggle<CR>", "Toggle Muren" },
+
   -- Markdown Preview
   ["<C-e>"] = { "<cmd>MarkdownPreviewToggle<CR>", "Toggle Markdown Preview" },
 
@@ -124,7 +127,6 @@ wk.register({
       "Search Notifications",
     },
 
-
     r = {
       function()
         builtin.registers()
@@ -139,7 +141,7 @@ wk.register({
       "Search keymaps",
     },
 
-    m = {
+    i = {
       function()
         vim.cmd.Telescope "media_files"
       end,

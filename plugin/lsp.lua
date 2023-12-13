@@ -33,7 +33,7 @@ lsp_zero.on_attach(function(client, bufnr)
   if client.supports_method('textDocument/formatting') then
     lsp_format.on_attach(client)
   else
-    vim.cmd("normal! magg=<S-g>`a" .. "<CR>")
+    vim.cmd("norm magg=<S-g>`a")
   end
 end)
 
@@ -57,7 +57,6 @@ mason.setup({
 local servers = {
   "lua_ls",
   "bashls",
-  "marksman",
   "hydra_lsp",
   "html",
   "cssls",

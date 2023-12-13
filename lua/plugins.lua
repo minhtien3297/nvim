@@ -177,9 +177,6 @@ require("lazy").setup({
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-tree.lua",
     },
-    config = function()
-      require("lsp-file-operations").setup()
-    end,
   },
 
   -- vim surround
@@ -241,10 +238,6 @@ require("lazy").setup({
     { "VonHeikemen/lsp-zero.nvim",        branch = "v3.x" },
     { "onsails/lspkind.nvim" },
     { "lukas-reineke/lsp-format.nvim" },
-    {
-      "hinell/lsp-timeout.nvim",
-      dependencies = { "neovim/nvim-lspconfig" }
-    },
   },
 
   -- cmp
