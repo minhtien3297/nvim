@@ -19,6 +19,17 @@ wk.register({
   ["<leader><space>"] = { ":so<CR>", "Source file" },
   ["<C-q>"] = { "<cmd>q<CR>", "Exit file" },
   ["<C-f>"] = { "magg=<S-g>`a", "Format file" },
+
+  ["<C-r>"] = { function()
+    if vim.wo.number then
+      vim.wo.number = false
+      vim.wo.relativenumber = true
+    else
+      vim.wo.number = true
+      vim.wo.relativenumber = false
+    end
+  end, "Toggle relativenumber" },
+
   ["<C-c>"] = { "<Esc>", "Normal Mode", mode = "i" },
   ["<C-y>"] = { [["+y]], "Copy to clipboard", mode = { "n", "v" } },
   J = {

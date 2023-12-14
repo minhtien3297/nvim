@@ -32,8 +32,6 @@ lsp_zero.on_attach(function(client, bufnr)
   -- otherwise you'll get a warning message
   if client.supports_method('textDocument/formatting') then
     lsp_format.on_attach(client)
-  else
-    vim.cmd("norm magg=<S-g>`a")
   end
 end)
 
