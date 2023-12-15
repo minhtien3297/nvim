@@ -32,11 +32,25 @@ wk.register({
 
   ["<C-c>"] = { "<Esc>", "Normal Mode", mode = "i" },
   ["<C-y>"] = { [["+y]], "Copy to clipboard", mode = { "n", "v" } },
+
   J = {
     { "mzJ`z",            "Cut line eazier",     mode = "n" },
     { ":m '>+1<CR>gv=gv", "Highlight rows down", mode = "v" },
   },
-  K = { ":m '<-2<CR>gv=gv", "Highlight rows up", mode = "v" },
+
+  K = {
+    {
+      function()
+        vim.lsp.buf.hover()
+      end,
+      "Hover code"
+    },
+    {
+      ":m '<-2<CR>gv=gv",
+      "Highlight rows up",
+      mode = "v"
+    }
+  },
 
   -- nvim tree
   [";;"] = { "<cmd>NvimTreeToggle<CR>", "Toggle Tree" },
