@@ -104,6 +104,11 @@ wk.register({
       end,
       "Rename all references",
     },
+
+    s = {
+      "<cmd>LspRestart<CR>",
+      "Lsp restart"
+    }
   },
 
   -- telescope
