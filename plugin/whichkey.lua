@@ -20,7 +20,7 @@ wk.register({
   ["<C-q>"] = { "<cmd>q<CR>", "Exit file" },
   ["<C-f>"] = { "magg=<S-g>`a", "Format file" },
 
-  ["<C-r>"] = { function()
+  ["<C-g>"] = { function()
     if vim.wo.number then
       vim.wo.number = false
       vim.wo.relativenumber = true
