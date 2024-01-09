@@ -1,5 +1,4 @@
 local status_lsp_zero, lsp_zero = pcall(require, "lsp-zero")
-local status_lspconfig, lspconfig = pcall(require, "lspconfig")
 local status_lsp_format, lsp_format = pcall(require, "lsp-format")
 local status_mason, mason = pcall(require, "mason")
 local status_mason_lspconfig, mason_lspconfig = pcall(require, "mason-lspconfig")
@@ -10,10 +9,6 @@ if not status_lsp_zero then
 end
 if not status_lsp_format then
   vim.notify('lsp_format error')
-  return
-end
-if not status_lspconfig then
-  vim.notify('lspconfig error')
   return
 end
 if not status_mason then
@@ -64,31 +59,11 @@ local servers = {
   "taplo",
 }
 
-local function organize_imports()
-  local params = {
-    command = "_typescript.organizeImports",
-    arguments = { vim.api.nvim_buf_get_name(0) },
-  }
-
-  vim.lsp.buf.execute_command(params)
-end
-
 mason_lspconfig.setup({
   ensure_installed = servers,
   automatic_installation = true,
 
   handlers = {
     lsp_zero.default_setup,
-
-    ["tsserver"] = function()
-      lspconfig.tsserver.setup({
-        commands = {
-          OrganizeImports = {
-            organize_imports,
-            description = "Organize Imports",
-          },
-        },
-      })
-    end,
   },
 })

@@ -50,23 +50,12 @@ lualine.setup({
         update_in_insert = true,
         always_visible = false,
       },
-
-      {
-        function()
-          if not session.current_session_name then
-            return 'No Session'
-          end
-
-          return session.current_session_name()
-        end,
-        color = { fg = "#ffffff", gui = "bold" },
-      }
     },
 
     lualine_x = {
       {
         function()
-          local msg = "No Active Lsp"
+          local msg = "null"
           local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
           local clients = vim.lsp.get_active_clients()
           if next(clients) == nil then
@@ -85,6 +74,17 @@ lualine.setup({
       },
 
       "encoding",
+
+      {
+        function()
+          if not session.current_session_name then
+            return 'OFF'
+          end
+
+          return 'ON'
+        end,
+        color = { fg = "#ffffff", gui = "bold" },
+      },
 
       {
         "filetype",

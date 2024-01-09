@@ -1,5 +1,6 @@
 local status, nvim_tree = pcall(require, "nvim-tree")
 local api_status, api = pcall(require, "nvim-tree.api")
+local view_status, view = pcall(require, "nvim-tree.view")
 
 local HEIGHT_RATIO = 0.8 -- You can change this
 local WIDTH_RATIO = 0.5  -- You can change this too
@@ -14,19 +15,9 @@ if not api_status then
   return
 end
 
-local function open_nvim_tree(data)
-  -- buffer is a real file on the disk
-  local real_file = vim.fn.filereadable(data.file) == 1
-
-  -- buffer is a [No Name]
-  local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
-
-  if not real_file and not no_name then
-    return
-  end
-
-  -- open the tree, find the file
-  api.tree.toggle({ focus = true, find_file = true })
+if not view_status then
+  vim.notify('nvim_tree.view error')
+  return
 end
 
 local function my_on_attach(bufnr)
@@ -69,6 +60,7 @@ local function my_on_attach(bufnr)
     api.marks.toggle()
     vim.cmd("norm j")
   end
+
   local mark_move_k = function()
     api.marks.toggle()
     vim.cmd("norm k")
@@ -90,6 +82,7 @@ local function my_on_attach(bufnr)
       end
     end)
   end
+
   local mark_remove = function()
     local marks = api.marks.list()
     if #marks == 0 then
@@ -117,6 +110,7 @@ local function my_on_attach(bufnr)
     api.marks.clear()
     api.tree.reload()
   end
+
   local mark_cut = function()
     local marks = api.marks.list()
     if #marks == 0 then
@@ -159,7 +153,7 @@ nvim_tree.setup({
     cursorline = true,
     relativenumber = true,
     float = {
-      enable = true,
+     enable = true,
       open_win_config = function()
         local screen_w = vim.opt.columns:get()
         local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
@@ -190,4 +184,17 @@ api.events.subscribe(api.events.Event.FileCreated, function(file)
   vim.cmd("edit " .. file.fname)
 end)
 
--- vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+-- auto resize when nvim resize
+vim.api.nvim_create_augroup("NvimTreeResize", {
+  clear = true,
+})
+
+vim.api.nvim_create_autocmd({ "VimResized" }, {
+  group = "NvimTreeResize",
+  callback = function()
+    if view.is_visible() then
+      view.close()
+      nvim_tree.open()
+    end
+  end
+})

@@ -10,7 +10,13 @@ if not status_mark then
   return
 end
 
-vim.keymap.set("n", "<C-a>", mark.add_file)
+local add_file = function()
+  mark.add_file()
+  vim.notify("file added to Harpoon")
+end
+
+vim.keymap.set("n", "<leader>a", add_file)
+
 vim.keymap.set("n", "<leader>e", ui.toggle_quick_menu)
 vim.keymap.set("n", "<C-n>", ui.nav_next)
 vim.keymap.set("n", "<C-p>", ui.nav_prev)
