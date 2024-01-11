@@ -7,5 +7,6 @@ end
 
 tree_context.setup({
   enable = true,
+  line_numbers = true,
   mode = "topline",
 })

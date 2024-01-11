@@ -1,5 +1,4 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
@@ -10,7 +9,6 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
-
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
@@ -25,7 +23,6 @@ require("lazy").setup({
   {
     "stevearc/dressing.nvim",
     event = "VeryLazy",
-    opts = {},
   },
 
   -- tag highlight
@@ -59,7 +56,11 @@ require("lazy").setup({
   { "karb94/neoscroll.nvim", },
 
   -- file navigation
-  { "ThePrimeagen/harpoon", },
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" }
+  },
 
   -- file icons
   { "nvim-tree/nvim-web-devicons", },
@@ -87,7 +88,6 @@ require("lazy").setup({
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
-    opts = {},
   },
 
   -- auto tag
@@ -98,13 +98,7 @@ require("lazy").setup({
   -- Comment
   {
     "numToStr/Comment.nvim",
-    opts = {},
-  },
-
-  -- Hard time
-  {
-    "m4xshen/hardtime.nvim",
-    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    lazy = false,
     opts = {},
   },
 
@@ -170,7 +164,7 @@ require("lazy").setup({
     },
   },
 
-  -- lsp nvim tree
+  -- update file import after file change
   {
     "antosha417/nvim-lsp-file-operations",
     dependencies = {
@@ -206,6 +200,9 @@ require("lazy").setup({
   -- hightlight searching pattern
   { "kevinhwang91/nvim-hlslens", },
 
+  -- multi text choosen
+  { 'mg979/vim-visual-multi' },
+
   -- search and replace
   {
     "AckslD/muren.nvim",
@@ -235,7 +232,10 @@ require("lazy").setup({
     { "williamboman/mason-lspconfig.nvim" },
 
     { "neovim/nvim-lspconfig" },
-    { "VonHeikemen/lsp-zero.nvim",        branch = "v3.x" },
+    {
+      "VonHeikemen/lsp-zero.nvim",
+      branch = "v3.x"
+    },
     { "onsails/lspkind.nvim" },
     { "lukas-reineke/lsp-format.nvim" },
   },

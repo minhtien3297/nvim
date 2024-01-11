@@ -1,35 +1,45 @@
-local status_mark, mark = pcall(require, "harpoon.mark")
-local status_ui, ui = pcall(require, "harpoon.ui")
+local status, harpoon = pcall(require, "harpoon")
 
-if not status_ui then
-  vim.notify('harpoon ui error')
-  return
-end
-if not status_mark then
-  vim.notify('harpoon mark error')
+if not status then
+  vim.notify("harpoon error")
   return
 end
 
-local add_file = function()
-  mark.add_file()
-  vim.notify("file added to Harpoon")
+harpoon:setup()
+
+local conf = require("telescope.config").values
+local function toggle_telescope(harpoon_files)
+  local file_paths = {}
+  for _, item in ipairs(harpoon_files.items) do
+    table.insert(file_paths, item.value)
+  end
+
+  require("telescope.pickers").new({}, {
+    prompt_title = "Harpoon",
+    finder = require("telescope.finders").new_table({
+      results = file_paths,
+    }),
+    previewer = conf.file_previewer({}),
+    sorter = conf.generic_sorter({}),
+  }):find()
 end
 
-vim.keymap.set("n", "<leader>a", add_file)
+local list_append = function()
+  harpoon:list():append()
+  vim.notify("File added to Harpoon")
+end
 
-vim.keymap.set("n", "<leader>e", ui.toggle_quick_menu)
-vim.keymap.set("n", "<C-n>", ui.nav_next)
-vim.keymap.set("n", "<C-p>", ui.nav_prev)
+harpoon:extend({
+  UI_CREATE = function(cx)
+    vim.keymap.set("n", "<C-v>", function()
+      harpoon.ui:select_menu_item({ vsplit = true })
+    end, { buffer = cx.bufnr })
 
-vim.keymap.set("n", "<leader>1", function()
-  ui.nav_file(1)
-end)
-vim.keymap.set("n", "<leader>2", function()
-  ui.nav_file(2)
-end)
-vim.keymap.set("n", "<leader>3", function()
-  ui.nav_file(3)
-end)
-vim.keymap.set("n", "<leader>4", function()
-  ui.nav_file(4)
-end)
+    vim.keymap.set("n", "<C-s>", function()
+      harpoon.ui:select_menu_item({ split = true })
+    end, { buffer = cx.bufnr })
+  end,
+})
+
+vim.keymap.set("n", "<leader>a", list_append)
+vim.keymap.set("n", "<leader>e", function() toggle_telescope(harpoon:list()) end)

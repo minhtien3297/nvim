@@ -2,7 +2,7 @@ local status, nvim_tree = pcall(require, "nvim-tree")
 local api_status, api = pcall(require, "nvim-tree.api")
 local view_status, view = pcall(require, "nvim-tree.view")
 
-local HEIGHT_RATIO = 0.8 -- You can change this
+local HEIGHT_RATIO = 0.9 -- You can change this
 local WIDTH_RATIO = 0.5  -- You can change this too
 
 if not status then
@@ -153,7 +153,7 @@ nvim_tree.setup({
     cursorline = true,
     relativenumber = true,
     float = {
-     enable = true,
+      enable = true,
       open_win_config = function()
         local screen_w = vim.opt.columns:get()
         local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()

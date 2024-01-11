@@ -5,4 +5,6 @@ if not status then
   return
 end
 
-color.setup()
+color.setup({
+  "*"
+}, { css = true })

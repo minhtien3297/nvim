@@ -6,12 +6,17 @@ if not status then
 end
 
 package.setup({
+  colors = {
+    outdated = "#f38ba8", -- Text color for outdated dependency virtual text
+  },
+
   icons = {
     enable = true,
     style = {
-      outdated = " | ",
+      outdated = " ▲ ",
     }
   },
+
   hide_up_to_date = true,
   hide_unstable_versions = true,
 })

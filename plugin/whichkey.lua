@@ -122,6 +122,13 @@ wk.register({
       "Find File",
     },
 
+    b = {
+      function()
+        builtin.buffers()
+      end,
+      "Find Buffers",
+    },
+
     g = {
       function()
         builtin.live_grep()
@@ -148,6 +155,13 @@ wk.register({
         vim.cmd.Telescope "lazy"
       end,
       "Search Lazy plugins",
+    },
+
+    t = {
+      function()
+        vim.cmd.TodoTelescope()
+      end,
+      "Search Todo",
     },
 
     n = {
@@ -192,7 +206,7 @@ wk.register({
       "Go to definitions",
     },
 
-    ["di"] = {
+    ["d"] = {
       function()
         builtin.diagnostics()
       end,

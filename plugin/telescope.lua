@@ -39,12 +39,17 @@ telescope.setup {
         end
       end
     },
+
+    layout_strategy = 'vertical',
+    layout_config = { height = 0.99, width = 0.99 },
   },
 
   extensions = {
     lazy = {
       -- Optional theme (the extension doesn't set a default theme)
-      theme = "ivy",
+      theme = "dropdown",
+      layout_strategy = 'vertical',
+      layout_config = { height = 0.99, width = 0.99 },
       -- Whether or not to show the icon in the first column
       show_icon = true,
       -- Mappings for the actions
