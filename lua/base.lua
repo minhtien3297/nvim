@@ -51,3 +51,5 @@ vim.opt.updatetime = 250
 
 -- show column right hand
 vim.opt.colorcolumn = "0"
+
+vim.opt.conceallevel = 1

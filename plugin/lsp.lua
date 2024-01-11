@@ -1,10 +1,15 @@
 local status_lsp_zero, lsp_zero = pcall(require, "lsp-zero")
+local status_lsp_config, lsp_config = pcall(require, "lspconfig")
 local status_lsp_format, lsp_format = pcall(require, "lsp-format")
 local status_mason, mason = pcall(require, "mason")
 local status_mason_lspconfig, mason_lspconfig = pcall(require, "mason-lspconfig")
 
 if not status_lsp_zero then
   vim.notify('lsp_zero error')
+  return
+end
+if not status_lsp_config then
+  vim.notify('lsp_config error')
   return
 end
 if not status_lsp_format then
@@ -67,3 +72,6 @@ mason_lspconfig.setup({
     lsp_zero.default_setup,
   },
 })
+
+local lua_opts = lsp_zero.nvim_lua_ls()
+lsp_config.lua_ls.setup(lua_opts)
