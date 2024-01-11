@@ -7,21 +7,9 @@ end
 
 harpoon:setup()
 
-local conf = require("telescope.config").values
-local function toggle_telescope(harpoon_files)
-  local file_paths = {}
-  for _, item in ipairs(harpoon_files.items) do
-    table.insert(file_paths, item.value)
-  end
-
-  require("telescope.pickers").new({}, {
-    prompt_title = "Harpoon",
-    finder = require("telescope.finders").new_table({
-      results = file_paths,
-    }),
-    previewer = conf.file_previewer({}),
-    sorter = conf.generic_sorter({}),
-  }):find()
+local toggle_menu = function()
+  vim.cmd.ASToggle()
+  harpoon.ui:toggle_quick_menu(harpoon:list())
 end
 
 local list_append = function()
@@ -31,15 +19,17 @@ end
 
 harpoon:extend({
   UI_CREATE = function(cx)
-    vim.keymap.set("n", "<C-v>", function()
+    vim.keymap.set("n", "<S-l>", function()
+      vim.cmd.ASToggle()
       harpoon.ui:select_menu_item({ vsplit = true })
     end, { buffer = cx.bufnr })
 
-    vim.keymap.set("n", "<C-s>", function()
-      harpoon.ui:select_menu_item({ split = true })
+    vim.keymap.set("n", "l", function()
+      vim.cmd.ASToggle()
+      harpoon.ui:select_menu_item()
     end, { buffer = cx.bufnr })
   end,
 })
 
 vim.keymap.set("n", "<leader>a", list_append)
-vim.keymap.set("n", "<leader>e", function() toggle_telescope(harpoon:list()) end)
+vim.keymap.set("n", "<leader>e", toggle_menu)
