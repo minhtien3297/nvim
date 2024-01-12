@@ -43,7 +43,7 @@ cmp.setup({
       maxwidth = 50,         -- prevent the popup from showing more than provided characters
       ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
 
-      before = function(entry, vim_item)
+      before = function(_, vim_item)
         return vim_item
       end,
     }),

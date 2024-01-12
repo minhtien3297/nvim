@@ -8,7 +8,6 @@ end
 harpoon:setup()
 
 local toggle_menu = function()
-  vim.cmd.ASToggle()
   harpoon.ui:toggle_quick_menu(harpoon:list())
 end
 
@@ -20,12 +19,10 @@ end
 harpoon:extend({
   UI_CREATE = function(cx)
     vim.keymap.set("n", "<S-l>", function()
-      vim.cmd.ASToggle()
       harpoon.ui:select_menu_item({ vsplit = true })
     end, { buffer = cx.bufnr })
 
     vim.keymap.set("n", "l", function()
-      vim.cmd.ASToggle()
       harpoon.ui:select_menu_item()
     end, { buffer = cx.bufnr })
   end,

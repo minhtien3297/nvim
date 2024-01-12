@@ -12,105 +12,52 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  -- theme
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
-  },
+  { "catppuccin/nvim",                         name = "catppuccin", priority = 1000, }, -- theme
 
-  -- ui input and select
-  {
-    "stevearc/dressing.nvim",
-    event = "VeryLazy",
-  },
+  { "stevearc/dressing.nvim",                  event = "VeryLazy", },                   -- ui input and select
 
-  -- tag highlight
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-  },
+  { "nvim-treesitter/nvim-treesitter",         build = ":TSUpdate", },                  -- tag highlight
 
-  -- sticky scroll
-  { "nvim-treesitter/nvim-treesitter-context", },
+  { "nvim-treesitter/nvim-treesitter-context", },                                       -- sticky scroll
 
-  -- status bar
-  { "nvim-lualine/lualine.nvim", },
+  { "nvim-lualine/lualine.nvim", },                                                     -- status bar
 
   -- telescope
   {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.4",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "tsakirist/telescope-lazy.nvim",
-      "nvim-lua/popup.nvim",
-      "nvim-telescope/telescope-media-files.nvim"
-    },
+    dependencies = { "nvim-lua/plenary.nvim", "tsakirist/telescope-lazy.nvim", "nvim-lua/popup.nvim", "nvim-telescope/telescope-media-files.nvim" },
   },
 
-  -- noti
-  { "rcarriga/nvim-notify", },
+  { "rcarriga/nvim-notify", },                                                                                -- noti
 
-  -- smooth scroll
-  { "karb94/neoscroll.nvim", },
+  { "karb94/neoscroll.nvim", },                                                                               -- smooth scroll
 
-  -- file navigation
-  {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    dependencies = { "nvim-lua/plenary.nvim" }
-  },
+  { "ThePrimeagen/harpoon",                branch = "harpoon2", dependencies = { "nvim-lua/plenary.nvim" } }, -- file navigation
 
-  -- file icons
-  { "nvim-tree/nvim-web-devicons", },
+  { "nvim-tree/nvim-web-devicons", },                                                                         -- file icons
 
-  -- highlight color
-  { "norcalli/nvim-colorizer.lua", },
+  { "norcalli/nvim-colorizer.lua", },                                                                         -- highlight color
 
-  -- highlight indent
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    opts = {},
-  },
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl", },                                                   -- highlight indent
 
   -- fold manager
   {
     "kevinhwang91/nvim-ufo",
-    dependencies = {
-      "kevinhwang91/promise-async",
-      "luukvbaal/statuscol.nvim",
-    },
+    dependencies = { "kevinhwang91/promise-async", "luukvbaal/statuscol.nvim", },
   },
 
-  -- auto pairs
-  {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-  },
+  { "windwp/nvim-autopairs",  event = "InsertEnter", }, -- auto pairs
 
-  -- auto tag
-  {
-    "windwp/nvim-ts-autotag",
-  },
+  { "windwp/nvim-ts-autotag", },                        -- auto tag
 
-  -- Comment
-  {
-    "numToStr/Comment.nvim",
-    lazy = false,
-    opts = {},
-  },
+  { "numToStr/Comment.nvim",  lazy = false, },          -- Comment
 
   -- markdown preview
   {
     "iamcco/markdown-preview.nvim",
-    cmd = {
-      "MarkdownPreviewToggle",
-      "MarkdownPreview",
-      "MarkdownPreviewStop",
-    },
-    ft = { "markdown" },
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop", },
+    ft = "markdown",
     build = function()
       vim.fn["mkdp#util#install"]()
     end,
@@ -118,67 +65,48 @@ require("lazy").setup({
 
   -- leetcode
   {
-    "Dhanus3133/LeetBuddy.nvim",
+    "kawre/leetcode.nvim",
+    build = ":TSUpdate html",
+    lazy = "leetcode.nvim" ~= vim.fn.argv()[1],
+    opts = { arg = "leetcode.nvim", },
     dependencies = {
-      "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
-    },
-  },
-
-  -- highlight todo
-  {
-    "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {},
-  },
-
-  -- git ignore
-  { "wintermute-cell/gitignore.nvim", },
-
-  -- git blame line
-  { 'f-person/git-blame.nvim', },
-
-  -- lazygit
-  {
-    "kdheepak/lazygit.nvim",
-    dependencies = {
       "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "rcarriga/nvim-notify",
+      "nvim-tree/nvim-web-devicons",
     },
   },
 
-  -- nvim session
-  { 'rmagatti/auto-session', },
+  { "folke/todo-comments.nvim",       dependencies = { "nvim-lua/plenary.nvim" }, },  -- highlight todo
 
-  -- editor configs
-  { "editorconfig/editorconfig-vim", },
+  { "wintermute-cell/gitignore.nvim", },                                              -- git ignore
 
-  -- command lsp
-  { "gelguy/wilder.nvim", },
+  { 'f-person/git-blame.nvim', },                                                     -- git blame line
+
+  { "kdheepak/lazygit.nvim",          dependencies = { "nvim-lua/plenary.nvim", }, }, -- lazygit
+
+  { 'rmagatti/auto-session', },                                                       -- nvim session
+
+  { "editorconfig/editorconfig-vim", },                                               -- editor configs
+
+  { "gelguy/wilder.nvim", },                                                          -- command lsp
 
   -- folder tree
   {
     "nvim-tree/nvim-tree.lua",
     version = "*",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
+    dependencies = { "nvim-tree/nvim-web-devicons", },
   },
 
   -- update file import after file change
   {
     "antosha417/nvim-lsp-file-operations",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-tree.lua",
-    },
+    dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-tree.lua", },
   },
 
-  -- vim surround
-  {
-    "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    event = "VeryLazy",
-  },
+  { "kylechui/nvim-surround",    version = "*",                             event = "VeryLazy", }, -- vim surround
 
   -- obsidian
   {
@@ -186,34 +114,18 @@ require("lazy").setup({
     version = "*", -- recommended, use latest release instead of latest commit
     lazy = true,
     ft = "markdown",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
+    dependencies = { "nvim-lua/plenary.nvim", },
   },
 
-  -- auto focus pane
-  {
-    "nvim-focus/focus.nvim",
-    version = '*'
-  },
+  { "nvim-focus/focus.nvim",     version = '*' },                              -- auto focus pane
 
-  -- hightlight searching pattern
-  { "kevinhwang91/nvim-hlslens", },
+  { "kevinhwang91/nvim-hlslens", },                                            -- hightlight searching pattern
 
-  -- multi text choosen
-  { 'mg979/vim-visual-multi' },
+  { 'mg979/vim-visual-multi' },                                                -- multi text choosen
 
-  -- search and replace
-  {
-    "AckslD/muren.nvim",
-    config = true,
-  },
+  { "AckslD/muren.nvim",         config = true, },                             -- search and replace
 
-  -- show outdated package
-  {
-    "vuki656/package-info.nvim",
-    dependencies = { "MunifTanjim/nui.nvim" },
-  },
+  { "vuki656/package-info.nvim", dependencies = { "MunifTanjim/nui.nvim" }, }, -- show outdated package
 
   -- auto save
   {
@@ -223,33 +135,20 @@ require("lazy").setup({
     opts = {},
   },
 
-  -- tmux navigation
-  { 'christoomey/vim-tmux-navigator' },
+  { 'christoomey/vim-tmux-navigator' }, -- tmux navigation
 
   -- lsp
-  {
-    { "williamboman/mason.nvim" },
-    { "williamboman/mason-lspconfig.nvim" },
-
-    { "neovim/nvim-lspconfig" },
-    {
-      "VonHeikemen/lsp-zero.nvim",
-      branch = "v3.x"
-    },
-    { "onsails/lspkind.nvim" },
-    { "lukas-reineke/lsp-format.nvim" },
-  },
+  { "williamboman/mason.nvim" },
+  { "williamboman/mason-lspconfig.nvim" },
+  { "neovim/nvim-lspconfig" },
+  { "VonHeikemen/lsp-zero.nvim",        branch = "v3.x" },
+  { "onsails/lspkind.nvim" },
+  { "lukas-reineke/lsp-format.nvim" },
 
   -- cmp
-  {
-
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "hrsh7th/nvim-cmp" },
-    {
-      "L3MON4D3/LuaSnip",
-      dependencies = { "rafamadriz/friendly-snippets" },
-    },
-  },
+  { "hrsh7th/cmp-nvim-lsp" },
+  { "hrsh7th/nvim-cmp" },
+  { "L3MON4D3/LuaSnip",                 dependencies = { "rafamadriz/friendly-snippets" }, },
 
   -- which key
   {

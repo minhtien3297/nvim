@@ -28,6 +28,15 @@ end
 lsp_zero.on_attach(function(client, bufnr)
   lsp_zero.default_keymaps({ buffer = bufnr })
 
+  lsp_zero.set_sign_icons({
+    error = " ✘",
+    warn = " ▲",
+    hint = " ⚑",
+    info = " »",
+  })
+
+  lsp_zero.highlight_symbol(client, bufnr)
+
   -- make sure you use clients with formatting capabilities
   -- otherwise you'll get a warning message
   if client.supports_method('textDocument/formatting') then
@@ -35,12 +44,17 @@ lsp_zero.on_attach(function(client, bufnr)
   end
 end)
 
-lsp_zero.set_sign_icons({
-  error = " ✘",
-  warn = " ▲",
-  hint = " ⚑",
-  info = " »",
+-- disable vim warning
+lsp_zero.use('lua_ls', {
+  settings = {
+    lua_ls = {
+      diagnostics = {
+        globals = { 'vim' },
+      }
+    }
+  }
 })
+
 
 mason.setup({
   ui = {
@@ -70,8 +84,9 @@ mason_lspconfig.setup({
 
   handlers = {
     lsp_zero.default_setup,
+    lua_ls = function()
+      local lua_opts = lsp_zero.nvim_lua_ls()
+      lsp_config.lua_ls.setup(lua_opts)
+    end
   },
 })
-
-local lua_opts = lsp_zero.nvim_lua_ls()
-lsp_config.lua_ls.setup(lua_opts)
