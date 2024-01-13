@@ -28,6 +28,7 @@ return {
       treesitter_context = true,
       notify = true,
       mason = true,
+      noice = true,
 
       indent_blankline = {
         enabled = true,

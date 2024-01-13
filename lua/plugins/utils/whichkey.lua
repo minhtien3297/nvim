@@ -23,6 +23,7 @@ return {
       -- remap
       ["<leader><space>"] = { ":so<CR>", "Source file" },
       ["<C-q>"] = { "<cmd>q<CR>", "Exit file" },
+      ["<S-l>"] = { "<cmd>noh<CR>", "Clear search", noremap = true, silent = true },
       -- ["<C-f>"] = { "magg=<S-g>`a", "Format file" },
 
       ["<C-f>"] = {
