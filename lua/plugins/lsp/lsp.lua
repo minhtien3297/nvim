@@ -28,6 +28,7 @@ return {
     local servers = {
       "lua_ls",
       "bashls",
+      "marksman",
       "hydra_lsp",
       "html",
       "cssls",
