@@ -29,6 +29,7 @@ return {
       ["<C-f>"] = {
         function()
           vim.lsp.buf.format()
+          vim.diagnostic.enable(0)
         end
         , "Format file"
       },
