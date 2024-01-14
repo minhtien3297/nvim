@@ -1,5 +1,6 @@
 return {
   "nvim-focus/focus.nvim",
+  lazy = false,
 
   config = function()
     local focus = require("focus")

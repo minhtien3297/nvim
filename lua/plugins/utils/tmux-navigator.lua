@@ -1,5 +1,6 @@
 return {
   'christoomey/vim-tmux-navigator',
+  event = "VeryLazy",
 
   init = function()
     vim.api.nvim_set_keymap('n', '{Left-Mapping}', ':lua TmuxNavigateLeft()<CR>', { silent = true })

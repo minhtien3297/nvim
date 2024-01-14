@@ -1,5 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim",
+  lazy = false,
 
   config = function()
     local status_session, session = pcall(require, 'auto-session.lib')

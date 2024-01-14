@@ -1,6 +1,5 @@
 return {
   "epwalsh/obsidian.nvim",
-  lazy = true,
   ft = "markdown",
 
   dependencies = {

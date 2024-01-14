@@ -26,7 +26,7 @@ local opts = {
   },
 
   defaults = {
-    lazy = false,
+    lazy = true,
     version = "*"
   },
 
