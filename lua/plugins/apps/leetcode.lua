@@ -16,6 +16,5 @@ return {
 
   opts = {
     arg = leet_arg,
-    lang = "vanillajs",
   }
 }
