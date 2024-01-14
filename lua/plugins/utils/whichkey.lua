@@ -3,7 +3,7 @@ return {
   event = "VeryLazy",
   init = function()
     vim.o.timeout = true
-    vim.o.timeoutlen = 300
+    vim.o.timeoutlen = 200
   end,
 
   config = function()
@@ -24,15 +24,7 @@ return {
       ["<leader><space>"] = { ":so<CR>", "Source file" },
       ["<C-q>"] = { "<cmd>q<CR>", "Exit file" },
       ["<S-l>"] = { "<cmd>noh<CR>", "Clear search", noremap = true, silent = true },
-      -- ["<C-f>"] = { "magg=<S-g>`a", "Format file" },
-
-      ["<C-f>"] = {
-        function()
-          vim.lsp.buf.format()
-          vim.diagnostic.enable(0)
-        end
-        , "Format file"
-      },
+      ["<C-f>"] = { "magg=<S-g>`a", "Format file" },
 
       ["<C-g>"] = {
         function()
@@ -67,38 +59,11 @@ return {
         }
       },
 
-      -- nvim tree
-      [";;"] = { "<cmd>NvimTreeToggle<CR>", "Toggle Tree" },
-
-      -- muren
-      [";m"] = { "<cmd>MurenToggle<CR>", "Toggle Muren" },
-
       -- Markdown Preview
       ["<C-e>"] = { "<cmd>MarkdownPreviewToggle<CR>", "Toggle Markdown Preview" },
 
-      -- Obsidian
-      ["<leader>o"] = {
-        name = "Obsidian",
-
-        o = { "<cmd>ObsidianOpen<CR>", "Open Obsidian", },
-        n = { "<cmd>ObsidianNew<CR>", "New note", },
-        q = { "<cmd>ObsidianQuickSwitch<CR>", "Search note", },
-        b = { "<cmd>ObsidianBacklinks<CR>", "List Back Links", },
-        s = { "<cmd>ObsidianSearch<CR>", "Search string", },
-      },
-
-      -- lazygit
-      ["<leader>f"] = {
-        name = "lazygit",
-
-        "<cmd>LazyGit<CR>",
-        "LazyGit",
-      },
-
-      -- lsp
-      ["<leader>l"] = {
-        name = "lsp",
-
+      ["<leader>"] = {
+        -- lsp
         o = {
           function()
             vim.diagnostic.open_float()
@@ -120,16 +85,25 @@ return {
           "Rename all references",
         },
 
-        s = {
-          "<cmd>LspRestart<CR>",
-          "Lsp restart"
-        }
+        s = { "<cmd>LspRestart<CR>", "Lsp restart" },
+
+        -- Obsidian
+        m = { "<cmd>ObsidianOpen<CR>", "Open Obsidian", },
+        n = { "<cmd>ObsidianNew<CR>", "New note", },
+        t = { "<cmd>ObsidianBacklinks<CR>", "List Back Links", },
+
+        -- lazygit
+        f = { "<cmd>LazyGit<CR>", "LazyGit", },
       },
 
-      -- telescope
       [";"] = {
-        name = "telescope",
+        -- nvim tree
+        [";"] = { "<cmd>NvimTreeToggle<CR>", "Toggle Tree" },
 
+        -- muren
+        m = { "<cmd>MurenToggle<CR>", "Toggle Muren" },
+
+        -- telescope
         f = {
           function()
             builtin.find_files()
@@ -207,42 +181,27 @@ return {
           "Search media files",
         },
 
-        ["gr"] = {
+        u = {
           function()
             builtin.lsp_references()
           end,
           "Go to references",
         },
 
-        ["gd"] = {
+        q = {
           function()
             builtin.lsp_definitions()
           end,
           "Go to definitions",
         },
 
-        ["d"] = {
+        d = {
           function()
             builtin.diagnostics()
           end,
           "Diagnostics",
         },
-
-        ["gst"] = {
-          function()
-            builtin.git_status()
-          end,
-          "Git status",
-        },
-
-        ["gco"] = {
-          function()
-            builtin.git_commits()
-          end,
-          "Git commit",
-        },
       },
     })
   end
-
 }

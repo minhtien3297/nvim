@@ -26,14 +26,9 @@ return {
         -- If title is given, transform it into valid file name.
         suffix = title
       else
-        -- If title is nil, just add 4 random uppercase letters to the suffix.
-        for _ = 1, 4 do
-          suffix = suffix .. string.char(math.random(65, 90))
-        end
+        suffix = suffix .. vim.fn.strftime("%c")
       end
       return suffix
     end,
-
-    open_notes_in = "hsplit",
   }
 }
