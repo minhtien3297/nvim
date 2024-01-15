@@ -10,7 +10,14 @@ return {
   },
 
   config = function()
+    local ih_status, ih = pcall(require, 'lsp-inlayhints')
+    if not ih_status then
+      vim.notify("inlayhints error")
+      return
+    end
+
     local lsp_zero = require('lsp-zero')
+    local lspconfig = require("lspconfig")
     lsp_zero.extend_lspconfig()
 
     lsp_zero.on_attach(function(client, bufnr)
@@ -46,8 +53,52 @@ return {
         lsp_zero.default_setup,
 
         lua_ls = function()
-          local lua_opts = lsp_zero.nvim_lua_ls()
-          require('lspconfig').lua_ls.setup(lua_opts)
+          local lua_opts = lsp_zero.nvim_lua_ls({
+            on_attach = function(client, bufnr)
+              ih.on_attach(client, bufnr)
+            end,
+
+            settings = {
+              Lua = {
+                hint = {
+                  enable = true,
+                },
+              },
+            },
+          })
+
+          lspconfig.lua_ls.setup(lua_opts)
+        end,
+
+        tsserver = function()
+          lspconfig.tsserver.setup({
+            settings = {
+              typescript = {
+                inlayHints = {
+                  includeInlayParameterNameHints = 'all',
+                  includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                  includeInlayFunctionParameterTypeHints = true,
+                  includeInlayVariableTypeHints = true,
+                  includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+                  includeInlayPropertyDeclarationTypeHints = true,
+                  includeInlayFunctionLikeReturnTypeHints = true,
+                  includeInlayEnumMemberValueHints = true,
+                }
+              },
+              javascript = {
+                inlayHints = {
+                  includeInlayParameterNameHints = 'all',
+                  includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                  includeInlayFunctionParameterTypeHints = true,
+                  includeInlayVariableTypeHints = true,
+                  includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+                  includeInlayPropertyDeclarationTypeHints = true,
+                  includeInlayFunctionLikeReturnTypeHints = true,
+                  includeInlayEnumMemberValueHints = true,
+                }
+              }
+            }
+          })
         end
       },
     })

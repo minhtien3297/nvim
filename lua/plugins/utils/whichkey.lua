@@ -91,6 +91,7 @@ return {
         m = { "<cmd>ObsidianOpen<CR>", "Open Obsidian", },
         n = { "<cmd>ObsidianNew<CR>", "New note", },
         t = { "<cmd>ObsidianBacklinks<CR>", "List Back Links", },
+        i = { "<cmd>ObsidianPasteImg<CR>", "Paste Img", },
 
         -- lazygit
         f = { "<cmd>LazyGit<CR>", "LazyGit", },

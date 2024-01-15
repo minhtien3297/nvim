@@ -12,11 +12,15 @@ return {
   opts = {
     dir = "~/Obsidian/knowledge-vault",
 
-    notes_subdir = "Inbox",
+    notes_subdir = "Notes/Inbox",
 
     -- Optional, completion.
     completion = {
       new_notes_location = "notes_subdir",
+    },
+
+    attachments = {
+      img_folder = "Assets/imgs",
     },
 
     -- Optional, customize how names/IDs for new notes are created.

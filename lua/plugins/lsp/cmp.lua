@@ -3,12 +3,13 @@ return {
   event = "InsertEnter",
 
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",         -- lsp
-    "hrsh7th/cmp-buffer",           -- buffer
-    "hrsh7th/cmp-path",             -- path
-    "L3MON4D3/LuaSnip",             -- snippets engine
-    "rafamadriz/friendly-snippets", -- usefule snippets
-    "saadparwaiz1/cmp_luasnip",     -- snippets
+    "hrsh7th/cmp-nvim-lsp",                -- lsp
+    "hrsh7th/cmp-buffer",                  -- buffer
+    "hrsh7th/cmp-path",                    -- path
+    "hrsh7th/cmp-nvim-lsp-signature-help", -- signature
+    "L3MON4D3/LuaSnip",                    -- snippets engine
+    "rafamadriz/friendly-snippets",        -- usefule snippets
+    "saadparwaiz1/cmp_luasnip",            -- snippets
     "onsails/lspkind.nvim",
     "VonHeikemen/lsp-zero.nvim"
   },
@@ -28,6 +29,7 @@ return {
         { name = 'buffer' },
         { name = 'luasnip' },
         { name = 'nvim_lsp' },
+        { name = 'nvim_lsp_signature_help' },
       },
 
       mapping = cmp.mapping.preset.insert({
