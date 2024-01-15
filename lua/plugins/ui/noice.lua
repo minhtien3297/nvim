@@ -16,6 +16,10 @@ return {
       },
     },
 
+    notify = {
+      replace = true,
+    },
+
     views = {
       cmdline_popup = {
         border = {
