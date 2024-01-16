@@ -19,39 +19,27 @@ return {
       },
 
       sections = {
-        lualine_b = {
-          "branch",
-          "diff",
-        },
+        lualine_b = { "branch", "diff", },
 
         lualine_c = {
-          {
-            "filename",
-            file_status = true,
-            path = 1,
-            symbols = {
-              modified = "modified",       -- Text to show when the file is modified.
-              readonly = "readonly",       -- Text to show when the file is non-modifiable or readonly.
-              unnamed = "unnamed buffers", -- Text to show for unnamed buffers.
-              newfile = "newfile",         -- Text to show for newly created file before first write
-            },
-          },
+          "filename",
 
           {
             "diagnostics",
+
             symbols = {
               error = "✘ ",
               warn = "▲ ",
               hint = "⚑ ",
               info = "» ",
             },
-            colored = true,
+
             update_in_insert = true,
-            always_visible = false,
           },
         },
 
         lualine_x = {
+          -- lsp
           {
             function()
               local msg = "null"
@@ -74,6 +62,7 @@ return {
 
           "encoding",
 
+          -- auto-session
           {
             function()
               if not session.current_session_name then
@@ -85,13 +74,9 @@ return {
             color = { fg = "#ffffff", gui = "bold" },
           },
 
-          {
-            "filetype",
-            colored = true,
-          },
+          "filetype",
         },
       },
-
     })
   end
 }
