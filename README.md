@@ -6,35 +6,99 @@ git clone git@github.com:minhtien3297/nvim.git
 
 # Programs needed
 
-1. homebrew: ```/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"```
+1. homebrew: 
 
-2. (Stuffs needed)[https://formulae.brew.sh/formula/] ```brew install wget```
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 
-3. neovim: ```brew install neovim```
+2. [Stuffs needed](https://formulae.brew.sh/formula/) 
 
-4. fzf: ```brew install fzf```
+```
+brew install wget
+```
 
-5. zoxide: ```brew install zoxide```
+3. neovim: 
 
-6. ripgrep: ```brew install ripgrep```
+```
+brew install neovim
+```
 
-7. pngpaste: ```brew install pngpaste```
+4. fzf: 
 
-8. FiraCode Nerd Font: ```https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.zip```
+```
+brew install fzf
+```
 
-9. git: ```brew install git```
+5. zoxide: 
 
-10. lazygit: ```brew install jesseduffield/lazygit/lazygit```
+```
+brew install zoxide
+```
 
-11. yarn: ```brew install yarn```
+6. ripgrep:
 
-12. node: ```brew install node```
 
-13. fd: ```brew install fd```
+```
+brew install ripgrep
+```
 
-14. catimg: ```brew install catimg```
+7. pngpaste:
 
-15. gitflow: ```brew install git-flow```
+
+```
+brew install pngpaste
+```
+
+8. FiraCode Nerd Font:
+
+
+```
+https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.zip
+```
+
+9. git:
+
+```
+brew install git
+```
+
+10. lazygit:
+
+```
+brew install jesseduffield/lazygit/lazygit
+```
+
+11. yarn:
+
+```
+brew install yarn
+```
+
+12. node:
+
+```
+brew install node
+```
+
+13. fd:
+
+```
+brew install fd
+```
+
+14. catimg:
+
+
+```
+brew install catimg
+```
+
+15. gitflow:
+
+```
+brew install git-flow
+```
 
 # Uninstall
 ```
