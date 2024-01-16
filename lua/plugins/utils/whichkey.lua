@@ -35,10 +35,10 @@ return {
             vim.wo.number = true
             vim.wo.relativenumber = false
           end
-        end, "Toggle relativenumber"
+        end, "Toggle relative number"
       },
 
-      ["<C-y>"] = { [["+y]], "Copy to clipboard", mode = { "n", "v" } },
+      ["<C-y>"] = { '"+y', "Copy to clipboard", mode = { "n", "v" } },
 
       J = {
         { "mzJ`z",            "Cut line eazier",     mode = "n" },
