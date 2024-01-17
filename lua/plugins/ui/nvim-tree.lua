@@ -134,6 +134,13 @@ return {
     nvim_tree.setup({
       on_attach = my_on_attach,
 
+      ui = {
+        confirm = {
+          remove = true,
+          trash = false,
+        },
+      },
+
       filters = {
         dotfiles = false,      -- show dot files
         custom = { "^.git$" }, -- hide git folder

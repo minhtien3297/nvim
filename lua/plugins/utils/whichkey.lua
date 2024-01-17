@@ -21,10 +21,10 @@ return {
 
     wk.register({
       -- remap
-      ["<leader><space>"] = { ":so<CR>", "Source file" },
+      ["<leader><leader>"] = { "<cmd>:wa<CR>", "Save files" },
       ["<C-q>"] = { "<cmd>q<CR>", "Exit file" },
       ["<S-l>"] = { "<cmd>noh<CR>", "Clear search", noremap = true, silent = true },
-      ["<C-f>"] = { "magg=<S-g>`a<cmd>:wa<CR>", "Format file", mode = "n" },
+      ["<C-f>"] = { "magg=<S-g>`a", "Format file", mode = "n" },
 
       ["<C-g>"] = {
         function()
