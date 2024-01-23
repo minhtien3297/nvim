@@ -3,7 +3,7 @@ return {
   lazy = false,
 
   opts = {
-    line_numbers = true,
+    max_lines = 1,
     mode = "topline",
   }
 }
