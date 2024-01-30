@@ -6,6 +6,7 @@ return {
     "hrsh7th/cmp-nvim-lsp",                -- lsp
     "hrsh7th/cmp-buffer",                  -- buffer
     "hrsh7th/cmp-path",                    -- path
+    "hrsh7th/cmp-cmdline",                 -- cmdline
     "hrsh7th/cmp-nvim-lsp-signature-help", -- signature
     "L3MON4D3/LuaSnip",                    -- snippets engine
     "rafamadriz/friendly-snippets",        -- usefule snippets
