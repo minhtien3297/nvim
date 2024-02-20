@@ -142,9 +142,8 @@ return {
       },
 
       filters = {
-        dotfiles = false,      -- show dot files
-        custom = { "^.git$" }, -- hide git folder
-        git_ignored = false,   -- show git ignore files
+        dotfiles = false,   -- show dot files
+        git_ignored = true, -- show git ignore files
       },
 
       view = {
