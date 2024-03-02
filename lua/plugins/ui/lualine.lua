@@ -22,7 +22,11 @@ return {
         lualine_b = { "branch", "diff", },
 
         lualine_c = {
-          "filename",
+          {
+            "filename",
+
+            path = 1
+          },
 
           {
             "diagnostics",
