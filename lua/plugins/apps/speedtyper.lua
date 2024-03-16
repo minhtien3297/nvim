@@ -5,7 +5,7 @@ return {
     game_modes = { -- prefered settings for different game modes
       -- type until time expires
       countdown = {
-        time = 700,
+        time = 900,
       },
       -- type until you complete one page
       stopwatch = {
