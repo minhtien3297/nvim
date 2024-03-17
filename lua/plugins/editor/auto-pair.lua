@@ -11,11 +11,6 @@ return {
       check_ts = true,
       enable_check_bracket_line = false,
       ignored_next_char = "[%w%.]",
-
-      ts_config = {
-        lua = { 'string' }, -- it will not add a pair on that treesitter node
-        javascript = { 'template_string' },
-      },
     })
 
     -- press % => %% only while inside a comment or string
