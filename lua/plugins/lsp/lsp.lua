@@ -1,16 +1,16 @@
 return {
-  'neovim/nvim-lspconfig',
-  cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
-  event = { 'BufReadPre', 'BufNewFile' },
+  "neovim/nvim-lspconfig",
+  cmd = { "LspInfo", "LspInstall", "LspStart" },
+  event = { "BufReadPre", "BufNewFile" },
 
   dependencies = {
-    'hrsh7th/cmp-nvim-lsp',
+    "hrsh7th/cmp-nvim-lsp",
     "lukas-reineke/lsp-format.nvim",
-    'williamboman/mason-lspconfig.nvim',
+    "williamboman/mason-lspconfig.nvim",
   },
 
   config = function()
-    local lsp_zero = require('lsp-zero')
+    local lsp_zero = require("lsp-zero")
     local lspconfig = require("lspconfig")
     lsp_zero.extend_lspconfig()
 
@@ -18,8 +18,8 @@ return {
       lsp_zero.default_keymaps({ buffer = bufnr })
       lsp_zero.highlight_symbol(client, bufnr)
 
-      if client.supports_method('textDocument/formatting') then
-        require('lsp-format').on_attach(client)
+      if client.supports_method("textDocument/formatting") then
+        require("lsp-format").on_attach(client)
       end
 
       lsp_zero.set_sign_icons({
@@ -43,7 +43,7 @@ return {
       "taplo",
     }
 
-    require('mason-lspconfig').setup({
+    require("mason-lspconfig").setup({
       ensure_installed = servers,
       automatic_installation = true,
 
@@ -56,5 +56,5 @@ return {
         end,
       },
     })
-  end
+  end,
 }
