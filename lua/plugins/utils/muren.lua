@@ -1,5 +1,5 @@
 return {
-  "AckslD/muren.nvim",
-  event = "VeryLazy",
-  opts = {}
+	"AckslD/muren.nvim",
+	event = "VeryLazy",
+	opts = {},
 }

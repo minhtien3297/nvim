@@ -1,60 +1,61 @@
 return {
-  "neovim/nvim-lspconfig",
-  cmd = { "LspInfo", "LspInstall", "LspStart" },
-  event = { "BufReadPre", "BufNewFile" },
+	"neovim/nvim-lspconfig",
+	cmd = { "LspInfo", "LspInstall", "LspStart" },
+	event = { "BufReadPre", "BufNewFile" },
 
-  dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    "lukas-reineke/lsp-format.nvim",
-    "williamboman/mason-lspconfig.nvim",
-  },
+	dependencies = {
+		"hrsh7th/cmp-nvim-lsp",
+		"lukas-reineke/lsp-format.nvim",
+		"williamboman/mason-lspconfig.nvim",
+	},
 
-  config = function()
-    local lsp_zero = require("lsp-zero")
-    local lspconfig = require("lspconfig")
-    lsp_zero.extend_lspconfig()
+	config = function()
+		local lsp_zero = require("lsp-zero")
+		local lspconfig = require("lspconfig")
+		lsp_zero.extend_lspconfig()
 
-    lsp_zero.on_attach(function(client, bufnr)
-      lsp_zero.default_keymaps({ buffer = bufnr })
-      lsp_zero.highlight_symbol(client, bufnr)
+		lsp_zero.on_attach(function(client, bufnr)
+			lsp_zero.default_keymaps({ buffer = bufnr })
+			lsp_zero.highlight_symbol(client, bufnr)
 
-      if client.supports_method("textDocument/formatting") then
-        require("lsp-format").on_attach(client)
-      end
+			if client.supports_method("textDocument/formatting") then
+				require("lsp-format").on_attach(client)
+			end
 
-      lsp_zero.set_sign_icons({
-        error = " ✘",
-        warn = " ▲",
-        hint = " ⚑",
-        info = " »",
-      })
-    end)
+			lsp_zero.set_sign_icons({
+				error = " ✘",
+				warn = " ▲",
+				hint = " ⚑",
+				info = " »",
+			})
+		end)
 
-    local servers = {
-      "lua_ls",
-      "bashls",
-      "marksman",
-      "hydra_lsp",
-      "html",
-      "cssls",
-      "volar",
-      "tsserver",
-      "jsonls",
-      "taplo",
-    }
+		local servers = {
+			"lua_ls",
+			"bashls",
+			"marksman",
+			"hydra_lsp",
+			"html",
+			"cssls",
+			"volar",
+			"tsserver",
+			"jsonls",
+			"taplo",
+			"tailwindcss",
+		}
 
-    require("mason-lspconfig").setup({
-      ensure_installed = servers,
-      automatic_installation = true,
+		require("mason-lspconfig").setup({
+			ensure_installed = servers,
+			automatic_installation = true,
 
-      handlers = {
-        lsp_zero.default_setup,
+			handlers = {
+				lsp_zero.default_setup,
 
-        lua_ls = function()
-          local lua_opts = lsp_zero.nvim_lua_ls()
-          lspconfig.lua_ls.setup(lua_opts)
-        end,
-      },
-    })
-  end,
+				lua_ls = function()
+					local lua_opts = lsp_zero.nvim_lua_ls()
+					lspconfig.lua_ls.setup(lua_opts)
+				end,
+			},
+		})
+	end,
 }

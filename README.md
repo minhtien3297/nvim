@@ -1,36 +1,36 @@
 # Install
 
 ```
-git clone git@github.com:minhtien3297/nvim.git 
+git clone git@github.com:minhtien3297/nvim.git
 ```
 
 # Programs needed
 
-1. homebrew: 
+1. homebrew:
 
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-2. [Stuffs needed](https://formulae.brew.sh/formula/) 
+2. [Stuffs needed](https://formulae.brew.sh/formula/)
 
 ```
 brew install wget
 ```
 
-3. neovim: 
+3. neovim:
 
 ```
 brew install neovim
 ```
 
-4. fzf: 
+4. fzf:
 
 ```
 brew install fzf
 ```
 
-5. zoxide: 
+5. zoxide:
 
 ```
 brew install zoxide
@@ -102,5 +102,5 @@ brew install git-flow
 
 # Uninstall
 ```
-rm -rf ~/.config/nvim && rm -rf ~/.local/share/nvim 
+rm -rf ~/.config/nvim && rm -rf ~/.local/share/nvim
 ```
