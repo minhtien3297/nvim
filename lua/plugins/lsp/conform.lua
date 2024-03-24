@@ -18,7 +18,6 @@ return {
 			if slow_format_filetypes[vim.bo[bufnr].filetype] then
 				return
 			end
-
 			local function on_format(err)
 				if err and err:match("timeout$") then
 					slow_format_filetypes[vim.bo[bufnr].filetype] = true
